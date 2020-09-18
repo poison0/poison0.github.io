@@ -6,7 +6,7 @@ keywords: 技术,electron,epub
 ---
 基于electron的web项目-桌面级epub阅读器，代码已在gitHub开源
 代码仓库：[Nread](https://github.com/poison0/Nreader)
-###技术栈
+### 技术栈
 *   [electron](https://github.com/electron/electron)
 *   [Vue](https://github.com/vuejs/vue)
 *   [electron-vue](https://github.com/SimulatedGREG/electron-vue)
@@ -26,7 +26,7 @@ vue init simulatedgreg/electron-vue my-project
 #引入ant-design
 npm install ant-design-vue --save
 ```
-**注意：**ant-design可能不会使用时可能不会生效，需要在webpack.renderer.config.js里面加入白名单，才能使用
+** 注意：** ant-design可能不会使用时可能不会生效，需要在webpack.renderer.config.js里面加入白名单，才能使用
 ```javascript
 let whiteListedModules = ['vue', 'ant-design-vue']
 ```

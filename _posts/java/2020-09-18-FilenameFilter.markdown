@@ -28,7 +28,7 @@ class Filter implements FilenameFilter {
     }
 }
 ```
-##用lambda表达式可以简写成如下形式
+## 用lambda表达式可以简写成如下形式
 ```java
 public class FilenameFilterTest {
     public static void main(String[] args) {
