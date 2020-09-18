@@ -27,7 +27,7 @@ vue init simulatedgreg/electron-vue my-project
 npm install ant-design-vue --save
 ```
 **注意：**ant-design可能不会使用时可能不会生效，需要在webpack.renderer.config.js里面加入白名单，才能使用
-```
+```javascript
 let whiteListedModules = ['vue', 'ant-design-vue']
 ```
 2.epubjs用来解析epub书籍的，epubjs使用时可能会报错，由于语法问题，需要修改导出的语法
