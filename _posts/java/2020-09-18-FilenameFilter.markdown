@@ -1,3 +1,9 @@
+---
+layout: post
+title: 目录过滤器FilenameFilter简单用法
+category: 技术
+keywords: 技术,java,gc
+---
 FilenameFilter接口存在的唯一原因就是过滤文件列表中的文件名，在调用path.list()方法中传入FilenameFilter的实现类即可。重要的是重写accept方法，方法返回true会被添加列表中，否则会被筛掉
 
 ## 筛选文件夹内以java结尾的文件名
