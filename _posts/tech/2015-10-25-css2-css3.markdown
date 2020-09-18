@@ -1,0 +1,2082 @@
+---
+layout: post
+title: Css2.1 和 Css3 学习笔记
+category: 技术
+keywords: 技术,css3
+---
+
+## BFC
+
+### BFC 作用
+
+```
+防止margin重叠
+清除内部浮动
+自适应两（多）栏布局
+防止字体环绕
+```
+
+### 触发BFC条件
+
+```
+根元素
+float的值不为none
+overflow的值不为visible
+display的值为inline-block、table-cell、table-caption
+position的值为absolute、fixed
+```
+
+### BFC的特性
+
+```
+内部的Box会在垂直方向上一个接一个的放置。
+垂直方向上的距离由margin决定
+bfc的区域不会与float的元素区域重叠。
+计算bfc的高度时，浮动元素也参与计算
+bfc就是页面上的一个独立容器，容器里面的子元素不会影响外面元素。
+```
+
+## 伪元素
+
+伪元素用于创建一些不在文档树中的元素，并为其添加样式。比如说，我们可以通过::before来在一个元素前增加一些文本，并为这些文本添加样式。虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。常见的伪元素有：::before，::after，::first-line，::first-letter，::selection、::placeholder等
+
+## 属性选择器
+
+我们可以通过属性选择器,选出带有特定的属性的标签元素
+
+```html
+
+<style>
+	li{height:30px; border:1px solid #000; list-style:none; margin:5px;}
+	li[lavender]{background: red;}
+</style>
+
+<ul>
+	<li lavender="owen" >owen</li>
+	<li lavender="zye"  >zye</li>
+	<li lavender="ppt"  >ppt</li>
+</ul>
+
+```
+
+想上面demo演示一样,我们可以通过同一种属性找到所对应的标签元素,并将他们全部变成红色
+
+
+```css
+	
+	li[lavender=owen]{background:yellow;}
+
+```
+
+如果想修改特定的属性的标签样式,可以这么写
+
+每一个属性都是一个词列表,也就是说多个标签里面可以有多个属性名(以空格隔开),如果需要从这个列表中选择特定的属性可以使用~=来选出具有特定属性名的标签元素
+
+
+```html
+
+<style>
+	li{height:30px; border:1px solid #000; list-style:none; margin:5px;}
+	li[lavender~=owen]{background: yellow;}
+</style>
+
+<ul>
+	<li lavender="owen handsome" >owen</li>
+	<li lavender="zye" >zye</li>
+	<li lavender="ppt" >ppt</li>
+</ul>
+
+```
+
+注意:~= 和 = 的区别, = 是要属性名完全相同才可以选取, 而~=是属性中只要有这个属性就能选取
+
+当然上面这样获取可能比较麻烦,如果不想每次获取属性都打一次属性名的话,可以使用^=来获取
+
+这样
+
+
+```css
+	li[lavender^=o]{background:yellow;}
+```
+
+这样只要是o开头的属性名就能被获取到,如果有多个o开头的属性,可以再加上后面的字母直到完全和其他属性名不同为止
+
+这里owen handsome 就获取到了o开头的标签
+
+当然能获取第一个属性开头也就有获取第一个属性结尾的方法,这里我们使用$=
+
+
+```css
+	li[lavender$=n]{background:yellow;}
+```
+
+这样通过$= 我们可以找到属性owen handsome结尾的e,然后将这个标签变成黄色
+
+我们还可以通过*= 找到含有特定字母的标签
+
+比如 zye 和 owne handsome 两个属性中都有e
+
+```css
+	li[lavender*=e]{background:yellow;}
+```
+
+我们就可以*=e找到对应的两个标签
+
+最后一个也是最特殊的属性选择器,他规定只要是 `某个特定字母-` 和 `单独的某个特定字母` 开头的属性
+
+```html
+
+<style>
+	li{height:30px; border:1px solid #000; list-style:none; margin:5px;}
+	li[lavender|=b]{background: yellow;}
+</style>
+
+<ul>
+	<li lavender="b-owen handsome" >owen</li>
+	<li lavender="g-zye"  >zye</li>
+	<li lavender="bppt"  >ppt</li>
+	<li lavender="b"  >b</li>
+</ul>
+
+```
+
+如上面所示, 含有b-owen handsome 和 b的元素都会被获取到,然而有b开头的 bppt 和 g-zye都不会被获取到
+
+## 结构性伪类选择器 
+
+除了通过属性选择html元素外,Css3还允许我们通过结构伪类来选择对应的元素
+
+
+```html
+
+<style>
+	p{height:30px; border:1px solid #000;}
+</style>
+
+<p>
+	p1
+</p>
+<p>
+	p2
+</p>
+<p>
+	p3
+</p>
+<p>
+	p4
+</p>
+<p>
+	p5
+</p>
+
+```
+
+例如这里所有的p标签,我们可以通过结构选择器来选择其中任意的p标签来实现不同的样式
+
+```css
+
+	p:nth-child(1){background:yellow;}
+	p:nth-child(2){background:red;}
+	p:nth-child(3){background:red;}
+```
+
+
+
+p:nth-child(数字)   即所有p标签对应的父级的第几个p标签,这样理解起来很拗口,还是再举个例子吧
+
+```html
+<ul>
+	<p></p>
+	<li></li>
+	<p></p>
+</ul>
+
+<ul>
+	<p></p>
+	<li></li>
+	<p></p>
+</ul>
+
+上面有两个Ul ul下有p标签有li标签
+这时候加一句
+<style> 	
+	p:nth-child(2){background:red;}
+</style>
+
+这样就会先找到所有p标签的父节点, 也就是两个ul标签 然后再找到这个父节点下的第二个结点,
+然后判断是否也是p结点,如果也是p结点那么就修改样式
+
+那么上面这么的布局结构,所有ul下的第二个结点都是li,那p:nth-child就没有任何效果
+
+如果我们改变一下他们的位置
+<ul>
+	<p></p>
+	<p></p>
+	<li></li>
+</ul>
+
+<ul>
+	<p></p>
+	<p></p>
+	<li></li>
+</ul>
+
+就可以发现所有ul 下的p 标签效果出现了
+```
+
+注意:这里结构性伪类选择器是以1开始计数的,不同于js
+
+同时,nth-child后面不单单填数字,还可以选择奇数(odd)和偶数(even)
+我们还可以让所有的奇数行变色
+
+```css
+
+	p:nth-child(odd){background:yellow;}
+
+```
+
+偶数行
+
+```css
+
+	p:nth-child(even){background:pink;}
+
+```
+
+结构性伪类选择器还支持n这么一个参数,n取0到正无穷.然后从n到∞开始遍历,知道遍历完成所有的标签
+我们这样我们就可以通过添加参数n的写法来获取奇偶数行了
+
+注意：元素获取是从1开始的,但是n却是从0开始的
+
+奇数行:
+
+```css
+
+	p:nth-child(2n-1){background:pink;}
+
+```
+
+偶数行:
+
+```css
+
+	p:nth-child(2n){background:pink;}
+
+```
+
+和nth-child所对应的还有一个nth-last-child 
+他俩唯一的区别就是nth-child从前往后数 , nth-last-child是从后往前数,其他的功能都相同
+
+还有一个nth-of-type,我们还是以刚刚那个例子为例
+
+```html
+<ul>
+	<p></p>
+	<li></li>
+	<p></p>
+</ul>
+
+<ul>
+	<p></p>
+	<li></li>
+	<p></p>
+</ul>
+
+<style> 	
+	p:nth-of-type(2){background:red;}
+</style>
+
+刚刚使用nth-child的时候,我们获取的是每个ul下的第二个结点,然后判断是否是p结点,如果是则加样式,不是则不加
+
+所以每个ul下的第二个标签是li和所选取的p不符合,也就没有任何样式
+
+但是,如果我们这里写的是nth-of-type的话,却能将每个ul下的第二个p结点找到并加样式
+说明,nth-of-type获取的不是每个ul下的第二个结点 而是根据选取的标签来匹配第几个元素
+
+```
+
+
+
+但是,如过我们现在把所匹配的东西换成类呢？
+
+```html
+
+<ul>
+	<p class="abc"></p>
+	<li class="abc"></li>
+	<p class="abc"></p>
+</ul>
+
+<ul>
+	<p class="abc"></p>
+	<li class="abc"></li>
+	<p class="abc"></p>
+</ul>
+
+我们再style里添加这个语句
+<style>
+	.abc:nth-of-type(2){background: red;}
+</style>
+
+那么会以什么形式获取呢？
+
+结果是获取每个ul下的第二个p
+
+如果我们把结构再换一下
+<ul>
+	<li class="abc"></li>
+	<p class="abc"></p>
+	<li class="abc"></li>
+</ul>
+
+<ul>
+	
+	<li class="abc"></li>
+	<p class="abc"></p>
+	<li class="abc"></li>
+</ul>
+
+那么这时候获取的又是li
+
+如果我们再换一下这样
+<ul>
+	<p class="abc"></p>
+	<li class="abc"></li>
+	<p class="abc"></p>
+</ul>
+
+<ul>
+	<li class="abc"></li>
+	<p class="abc"></p>
+	<li class="abc"></li>
+</ul>
+
+那么获取的是 第一个ul里的第二个p  和 第二个ul 里面的第一个p
+
+那么我们就看出来了,如果是获取类的话,流程是:先根据不同父级的第一个类的标签获取父级,再从该父级中找到对应标签的第几个元素
+
+那么以此类推 nth-child再获取类的时候也是如此,都是根据第一个类来决定获取什么元素
+```
+
+当然一样的 也有nth-last-of-type 和 nth-of-type寻取元素顺序相反,但其他功能相同
+
+
+当然还有什么
+
+first-child 
+last-child
+first-of-type
+last-of-type
+only-child
+only-of-type
+empty
+
+感觉比较鸡肋
+
+只要牢牢记住
+nth-child是 根据结点寻找,并且找的结点要和选择的结点标签(或者类名)要一致      (不一定能找的到)
+nth-of-type 是根据所匹配的标签(或者第一个类名)寻找                           (一定能找的到)
+
+结构性伪类我认为基本上就够了
+
+nth-child  和 nth-of-type 个人认为实在弄得太复杂,但是功能还是很强大的.慎用
+
+
+## 伪类和伪类元素
+
+:target
+当我们点击锚点,产生目标的时候触发修改其样式
+
+[demo](/assets/download/Pseudo-class1.html)
+
+### 表单伪类
+
+:enabled
+当表单可以执行的时候呈现的样式
+
+:disabled
+当表单不可执行的时候呈现的样式
+
+[enabled 和 disabled 的 demo](/assets/download/Pseudo-class2.html)
+
+:checked
+当选框选中时候呈现的样式(可以是单选也可以是多选)
+
+:indeterminate
+单选框还未进行选择的时候的样式
+用户选择后样式消失
+
+[checked 和 indeterminate](/assets/download/Pseudo-class3.html)
+
+我们可以使用checked制作一个自定属性的单选按钮
+
+[一个自定义单选框](/assets/download/Pseudo-class4.html)
+
+### 文本伪类
+
+:first-line 选取第一行文本并修改样式
+
+:first-letter 选取第一个文字(如果使用了这个伪类那就无法进行选取了)
+
+::selection 改变选取文本高亮样式
+
+::after 和 ::before (在文本前面添加内容 和 后面添加内容)
+也可做:afer 和 :before,还可以用来制作小箭头和解决bfc问题(重要)
+
+
+:not(s)排除多个或者一个的样式
+
+
+```html
+<style>
+	h1:not(.not){background: red;}
+</style>
+
+<body>
+	<h1>h1</h1>
+	<h1 class="not">h1</h1>
+	<h1 class="not">h1</h1>
+	<h1>h4</h1>
+	<h1>h5</h1>
+	<h1>h6</h1>
+	<h1>h7</h1>
+</body>
+
+这里我给所有h1设置了红色,但是用:not()排除了所有带.not的h1标签
+```
+
+## 新增颜色模式
+
+Css3里面新增了rgba颜色模式,可以允许我们单独调节调节单层文本或者布局的透明度
+(不影响父级或子级的透明度)
+
+我们还可以使边框变成半透明
+
+```css
+	#box{ width:100px; height:100px; border:10px solid rgba(255,255,255,0.5);}
+```
+
+## 新增颜色HSLA模式
+
+HSLA模式即声明使用 色调(Hue) 、 饱和度(Saturation) 、 亮度(Lightness) 和 透明度(Alpha) 来设定颜色,使用和上文提到的rgba颜色模式相同
+
+
+```css
+	#box{ width:100px; height:100px; background:hsla(165, 35%, 50%, 0.2);}
+```
+
+其中Hue衍生于色盘 0和360是红色，接近120的是绿色，240是蓝色。
+
+Saturation值是一个百分比：0%是灰度，100%饱和度最高
+
+Lightness值也是一个百分比：0%是最暗，50%均值，100%最亮。
+
+Alpha 使用和上文相同
+
+而HSLA模式在各大标准浏览器中都获得了良好的支持而且无需添加浏览器内核前缀
+
+## 文字阴影
+
+text-shadow: x轴偏移 , y轴偏移 , 向外扩展度 , 颜色;
+
+通过文字阴影我们可以制作文字描边
+
+```css
+	text-shadow: 0 , 0 , 1px red;
+```
+可替代 只有 -webkit- 支持的文字描边 -webkit-text-stroke: 宽度 颜色;
+
+我们可以对文字添加多层阴影
+
+```css
+	text-shadow: 0 0 5px red,5px 0 5px pink,0 5px 5px yellow;
+```
+
+用逗号隔开可以添加多次阴影(多次添加阴影会影响浏览器性能)
+
+我们可以来看一下妙味给我们提供的一些文字效果
+
+[光晕效果](/assets/download/text-shadow1.html)
+
+[文字模糊](/assets/download/text-shadow2.html)
+
+[火焰文字](/assets/download/text-shadow3.html)
+
+## 文本排列
+
+direction 定义文字排列方式
+
+direction: rtl 或者 ltr; (right to left 或者 left to right)
+
+如果设置了rtl,则文本整个从右到左排列,但是文本阅读方向还是默认的从右到左
+
+如果需要设置文本阅读方向,我们在加上uncode-bi-di:bidi-override;
+实现文本从右到左阅读
+
+兼容ie6+
+
+## 超出文字显示省略号
+
+当我们需要应对超出文字的时候(标题太长超出范围的时候)
+可以使用overflow:hidden;来隐藏文本, 但是这样有时候会将处于超出边缘的文字一分两半,就影响效果。
+
+这样我们需要一种既能隐藏超出文字,有不影响用户体验的方法,就可以加省略号来代替隐藏
+
+首先浏览器对超出文字的处理默认是超出自动换行的,我们需要将其设置为非默认隐藏
+
+```css
+	white-space:nowrap;
+```
+然后overflow:hidden;将溢出的文字隐藏,这时候就会出现上文提到的问题
+
+这时候就使用css3给我们提供的 text-overflow:Ellipsis (显示省略号)
+如果我们不想要省略号可以写clip 这样就能处理掉那些溢出一半的文字
+
+## FontFace
+
+当我们需要在网页中添加一些特殊的字体,可以使用facefont引用字体包让用户一起加载
+
+但是不同的浏览器对字体文件的格式支持的不同,所以我们需要将一个字体文件格式化
+为不同的字体格式
+
+老外呢就给我们提供了这么一个网站
+[onlinefontconverter](https://onlinefontconverter.com/)
+
+当我们获得不同格式的字体文件之后,我们只要在css中添加这样的代码
+
+```css
+@font-face {
+    font-family: 'newfontstyle'; /*字体类名可以自定义*/
+    src: url('需要引用的字体文件名.eot');
+    src: url('需要引用的字体文件名.eot?#iefix') format('embedded-opentype'),
+         url('需要引用的字体文件名.woff') format('woff'),
+         url('需要引用的字体文件名.ttf') format('truetype'),
+         url('需要引用的字体文件名.svg#untitledregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*这样就可以直接用这种字体了*/
+
+h1{font-family:'newfontstyle';}
+```
+
+但是中文字体比较麻烦,中文常用的字都有几千个,而英文就那26个字母
+这就产生了问题:
+
+① 中文字体文件转格式特别麻烦
+② 中文字体文件特别大影响网页加载
+
+而腾讯的ISUX团队开发了字蛛中文字体压缩器(基于node)
+
+从而解决了这个问题
+具体可见
+
+[设计师的春天：中文WebFont解决方案Font-Spider(字蛛)](http://isux.tencent.com/zh-hans/font-spider.html)
+
+[字蛛官网](http://font-spider.org/)
+
+## 弹性盒模型
+
+### display:box 和 box-flex
+
+我们先来看一个例子
+
+[demo](/assets/download/display-box.html)
+
+
+```html
+
+<style>
+	.wrap{
+		width:600px;
+		height: 200px;
+		display:box;  /*也可以设置成inline-box效果都是一样的*/
+	}
+	.sectionFirst{
+		background:orange; 
+		box-flex:3; 
+	}
+	.sectionSecond{ 
+		background:purple; 
+		box-flex:2;
+	}
+	.sectionThird{
+		background:green; 
+		box-flex:1;
+	}
+</style>
+
+<article class="wrap">
+	<section class="sectionFirst">01</section>
+	<section class="sectionSecond">02</section>
+	<section class="sectionThird">03</section>
+</article>
+
+/*注:这里我将浏览器内核前缀省略了,因为我希望技术讨论应该注重精华*/
+
+```
+
+
+这里有一个大的盒子,当我们给wrap。当我们给他设置`display:box;`的时候我们就可以对他进行弹性分配了
+
+注意这里底下的子标签 01 02 03 我都没有给他们设置宽高,
+但是给了他们这么一个东西`box-flex` 更具它设置子级所获得的父级的空间期权
+这样父级的空间就这么按照期权的比例分成 1 + 2 + 3 = 6 份 那么一份就是 width:100px; height:200px;
+
+然后根据根据1:2:3的比例子级进行分割父级的空间
+
+但是如果我们将其中一个只设为固定宽高呢？
+
+```css
+	.sectionSecond{ 
+		background:purple;
+		width:200px;
+		height:100px;
+	}
+```
+
+这样父级就会先为这个设置了固定宽高的子级分配宽高,然后在将剩下的空间根据flex期权来分配
+
+如果固定宽高已经将父级的空间分配完毕了,那么flex及失效
+
+如果一个元素既分配固定宽高又有flex期权,那么两者不冲突,两种效果将叠加
+
+其次,眼尖的同学一定会发现,我并没有给子级设置`float:left;` 但是子级却可以从左到右排列开来,而且子级还可以设置自己的固定样式
+
+这说明如果给父子设置display:box; 那么子级等于自动加上了`display:inline-box;`
+(尽管firebug中显示的子级的布局还是`display:block`)至于为什么,下文会提到
+
+这里还有一个问题,我很疑惑,在其他标准浏览器中,我可以给添加了`display:box;`的盒子再加上居中`margin:0 auto;` 但是在火狐下,却无法设置左右居中
+看来C3的标准制定还是任重道远
+
+### box-orient
+
+从上文看来只要给父级设置了`display:box;`我们就可以对父级底下的子级进行一系列操作了
+除了用flex来动态的分配空间外,我们还可以使用orient来控制子级的排列
+
+orient(英:标定方向,东方的)可选的值有:
+
+horizontal(水平) | vertical(垂直) | inline-axis(内联轴) | block-axis(块轴) | inherit
+
+这个值设置对象是父级,作用效果是全部子级元素(不能给某个子级单独设置)
+
+上面提到了,当我们给父级设置`display:box` 自己会默认`display:inline-block`
+这就是因为 `box-orient` 的初始值是`inline-axis` 然后子级默认就是`display:block`
+
+所以两个效果叠加起来就变成了`display:inline-block`的效果 
+
+如果把orient修改成block-axis那么就等于取消了inline-block的效果,那么这时候所有的子级元素都会变成像块状元素一样独占一行了。
+(但是注意即使变成了默认的块状元素也不能加浮动,如果加了浮动就会脱离父级`display:box;`的控制)
+
+而垂直和水平呢,则是单纯的控制子级的水平垂直排列,不会改变元素的display
+
+这个属性感觉特别有用,这样我们再也不需要使用`margin:0 auto;`和`position:absolute; top:50%; left:50%来进行居中了
+
+### 关于火狐下的补充
+
+最近做本博客的开头进度条的时候,使用弹性盒模型构建,发现火狐底下对display:box的兼容不是太好,
+
+如果没有为盒子设置宽度的话,box-pack会失效。
+
+
+还有一个问题,在制作时钟转盘的时候,如果给父级添加了最小高度或最大高度,并且为父级设置了overflow:hidden;
+
+```css
+	body{ 
+		display:box;
+		box-align:center;
+		box-pack:center;
+
+		overflow:hidden;
+		min-height:600px;
+
+		/*
+			或者给body添加
+			height:700px;
+			max-height:600px;
+			overflow:hidden;
+
+			也会导致盒子被拉伸
+		*/
+	}
+```
+在火狐下子级盒子会继承父级盒子的最小(最大)高度,导致整个盒子被拉伸
+但是在其他标准浏览器却没有类似的问题
+
+### box-direction
+
+上文我们曾提到text-direction来控制文字的排列,那么类比文字的排列,我们就很容易理解box-direction的用处了
+
+这个值同样只给父级设定,作用全部子级
+
+可选的值有:
+
+Normal | Reverse(反向) | inherit
+
+### box-ordinal-group
+
+ordinal(英:序数的)-group可以设定不同子级元素的初始位置
+
+
+```css
+	.sectionFirst{background:orange; 
+		box-flex:3;
+		box-ordinal-group:2
+	}
+	.sectionSecond{ background:purple;  
+		box-flex:2;
+		box-ordinal-group:1;
+	 }
+	.sectionThird{ background:green;
+		box-flex:1;
+		box-ordinal-group:3;
+	}
+
+	/*同样的我还是省略浏览器内核前缀*/
+```
+
+这样我们就可以随意打乱所布局好的子级元素,又不脱离文档流。
+
+### box-pack
+
+我们可以在父级设定`box-pack`来对子级和空闲空间进行管理
+
+当然如果已经子级已经通过flex把父级的空间全部分配完了,那么这个属性设置了也没什么用了
+
+pack(英:包,一组)可选的值:
+
+Start | End | Center | Justify(英:证明,整齐排列) | inherit
+
+如果设置了start 那么所有子元素在盒子左侧显示，空闲空间在右侧
+end 那么所有子元素在盒子右侧显示，空闲空间在左侧
+center 那么所有子元素居中,空闲空间在两侧
+Justify 那么空闲空间与子元素之间整齐分布
+
+### box-align
+
+上文说到的`box-pack` 如果我们设置为center那么就可以实现x轴水平居中,但是如果我们需要对y轴进行居中,却要用到box-align
+
+align()可选的值:
+
+Start | End | Center 
+
+start 自然就是让全部子元素屯在父级顶部了,默认值也是Start
+
+End 以此类推当然就是让全部子元素屯在父级底部了
+
+center 实现垂直方向水平居中
+
+还有注意浏览器兼容问题 至少在本人撰写这篇文章的时候关于`display:box;`的相关Css属性还是需要添加浏览器内核前缀
+
+我们可以给body标签设置`display:box;`这样就能更好的控制底下的子元素和空闲空间了,布局也就会轻松很多
+
+## box-shadow
+
+就想text-shadow Css3也可以为盒模型提供阴影
+
+box-shadow : 投影方式(选填) X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径(选填) 颜色
+
+来看一个简单demo
+
+```css
+	box-shadow: 0 0 30px 30px pink;	
+```
+
+[demo1](/assets/download/box-shadow1.html)
+
+如果我们要内阴影那么只要再加一个参数就ok了
+
+```css
+	box-shadow:inset 0 0 30px 30px pink;	
+```
+
+如果不填写那么就是默认的外投影
+
+[demo2](/assets/download/box-shadow2.html)
+
+## box-reflect
+
+我们可以使用box-reflect来制作盒的投影
+
+box-felect 方向 投影和本影间距 渐变(选填)
+
+
+```css
+	box-felect: right;
+
+	/*省略了浏览器内核前缀*/	
+```
+
+[demo1](/assets/download/box-reflect1.html)
+
+这样可以镜像出一个右原本的倒影
+
+如果给倒影加上渐变呢？
+
+
+```css
+box-reflect:right 50px linear-gradient(left,rgba(0,0,0,1) 0,rgba(0,0,0,0) 100%);	
+/*省略了浏览器内核前缀*/
+```
+
+[demo2](/assets/download/box-reflect2.html)
+
+## resize
+
+Css3中允许我们让盒子自由的拖拽(重新改变盒子的大小)
+
+只要给盒子加上resize属性 并且吧overflow：属性设置为auto 你就可以拖动右下角来改变盒子的宽高
+
+```css
+ #box{width: 100px; height: 100px;  resize:both; overflow:auto;}
+```
+
+[demo](/assets/download/resize1.html)
+
+其中resize可有的属性:
+
+both 水平垂直都可以缩放
+horizontal 只有水平方向可以缩放
+vertical 只有垂直方向可以缩放
+none 不拖拽
+
+textarea标签默认resize:both
+如果不希望用户玩坏你的页面最好清一下
+
+```css
+ texttarea{ resize:none; }
+```
+
+## box-sizing
+
+很逆天的一玩意,可以修改盒模型尺寸计算的规则
+
+可选参数:
+content-box: border和padding不计算入width之内
+
+
+border-box: border和padding计算入width之内，其实就是怪异模式了~
+
+[demo](/assets/download/box-sizing.html)
+
+## 分栏式文字布局
+
+Css3中还提供分栏式的文字布局供我们使用
+
+如果你希望你写的文字内容,在一个盒子里以分栏的形式出现,我们可以为他设置分栏布局
+
+先看一个[demo](/assets/download/column1.html)
+
+这里我设定了让一大块的文字,分栏布局,每一栏的宽度是10em*16 = 160px
+这里我没有设置column-count,那么浏览器就会自主决定将文本分成合适的列数
+
+```css
+ column-width: 10em;
+```
+
+这里分栏式布局有这么几个属性
+column-width : 设置每一分栏的宽度,浏览器会自动决定文本分成合适的栏数
+column-count : 分栏栏数,设置后浏览器会自动计算宽度,并设置成相应的栏数
+column-gap   : 设置两个栏目之间的宽度
+column-rule  : 设置分栏列间的分割线
+columns      : 分栏布局简写
+
+这里注意,column-width column-gap 和 column-count 都会改变分栏的列数和栏数,
+首先为了不冲突,请尽量经过合理的计算后再设定样式
+
+如果冲突了(比如一个900px的盒子,我让他分栏宽度为160px,但却只设两列,那么肯定不能完全填满盒子的)
+浏览器会自动选择一个折中的办法,来进行分栏.
+
+而且,Css3还提供了columns属性可以允许我们简写
+如果我们设定是宽度,只要我们给属性带上单位,那么column-width可以这么写
+
+```css
+ columns: 10em;
+/* 等同于 column-width: 10em; */
+```
+如果我们设定的是列数,只要我们不给属性单位,那么column-count就可以这么写
+
+```css
+ columns: 2;
+/* 等同于 column-count: 2; */
+```
+
+如果我们宽度列数都要设定,那么可以这样写
+
+```css
+ columns: 2 10em;
+/* 等同于 column-count: 2; + column-width */
+/* 两个参数顺序可以互逆 */
+```
+
+但是columns只支持column-count 和 column-width 的简写,其他属性还是要照常写
+
+如果我们要给分栏添加分栏线
+
+```css
+column-rule:3px solid #000;
+```
+
+
+还要注意:本人在撰写这篇博文的时候,关于分栏式布局的全部样式还必须添加上浏览器内核前缀
+
+## 圆角
+
+如果需要在原来的浏览器上实现圆角的效果,需要通过切图,再使用双层嵌套来实现
+但是在Css3便很容易就可以实现圆角的效果。而且圆角对各个标准浏览器都已经实现兼容
+
+圆角的实现原理
+
+![picshoot](/assets/img/broder-radius.png)
+
+如图,在Css3中圆角的实现是依靠,对一个角x轴偏移 和 y轴偏移来实现的
+
+
+```css
+	border-radius:5px;	
+```
+
+这是最简单的实现4个角呈圆角,即令四个角的X、Y轴都偏移5像素
+
+在X、Y偏移量相同的情况下,如果我们想要让四个角的的X、Y偏移量不同,可以尝试这种写法
+
+
+```css
+	border-radius:5px 10px 15px 20px;	
+```
+
+那么顺序是从左上→右上→右下→左下(顺时针排列)
+
+如果需要对角相同的话,可以尝试2个参数的写法
+
+
+```css
+	border-radius:10px 20px;	
+```
+
+这样写的顺序是左上角和右上角 → 右上角和右下角
+
+
+```css
+	border-radius:10px 15px 20px;	
+```
+
+如果是三个参数呢,那么就是从左上角 → 右上角和左下角 → 右下角
+
+以上的情况都是X、Y轴相同,但是角不同的例子
+如果需要细致的控制X Y轴的偏移度的话,可以这么写
+
+
+```css
+	border-radius:10px/20px;	
+```
+
+这种情况就是,四个角都相同,都是X轴偏移10px , Y轴偏移20px
+
+两个参数、三个参数、四个参数的写法(所对应的角的顺序都是相同的)
+
+两个参数:
+
+```css
+	border-radius:10px 15px/20px 25px;	
+```
+
+三个参数:
+
+```css
+	border-radius:10px 15px 20px/20px 25px 30px;	
+```
+
+四个参数:
+
+
+```css
+	border-radius:10px 15px 20px 25px/20px 25px 30px 35px;	
+```
+
+如果我们要画一个圆那么最简单的方法保证宽高相等
+
+
+```css
+	border-radius:50% 50%;	
+```
+
+绘制一个椭圆的话
+
+```css
+	border-radius:50%/50%;	
+```
+
+## 边框背景
+
+### border-image-sourceg
+
+Css3中还提供了这么一个属性border-image来允许我们给边框添加自定义的图片
+如果单纯只设border-image的话,那么自定义的图片将会分配在盒子的四个角上
+
+
+```css
+	border-image:url(边框背景路径);	
+```
+
+[demo](/assets/download/border-image-demo1.html)
+
+### border-width
+
+这个边框的宽度直接设置就行
+
+```css
+	border-width:100px;	
+```
+
+或者上下左右
+
+```css
+	border-top-width:100px;
+	border-bottom-width:100px;
+	border-left-width:100px;
+	border-right-width:100px;	
+```
+
+但是如果我们要真正的将背景变成一个边框背景而不是四个角的背景的话
+我们需要对背景图片进行切割
+
+### border-image-slice
+
+当然边框背景所需要的图片也不是,随随便便就能拿张图片过来用的,一张标准的边框背景图片需要以一种九宫格的方式呈现
+
+![picshoot](/assets/img/border-image2.png)
+
+如图所示,当我们拿到一张边框背景图的时候,我们需要先将其切四刀分成九份
+
+其中四个角格子所占的图片,分别对应一个盒子的四个角。而上下左右的格子则会被拉伸,平铺或者重复成为一个盒子的四条边
+
+![picshoot](/assets/img/border-image1.gif)
+
+如图我们来写border-image最基本的语句
+
+```css
+	border-image:url(边框背景路径) 从左位移n个像素竖直切割 从上位移n个像素水平切割
+	从右位移n个像素竖直切割 从下位移n个像素水平切割 四边延伸方法	
+```
+
+切割方向也是采用顺时针的方式
+
+或者两重参数
+
+```css
+	border-image:url(边框背景路径) 上下两边切 左右两边切 四边延伸方法	
+```
+
+当进行完图片分割后,就能看到成形的边框背景了
+(这里说明一点,当没有设置四边延伸方法的时候,默认的方式是拉伸,所以demo2中四边被拉伸了)
+[demo2](/assets/download/border-image-demo2.html)
+
+### border-image-repeat 
+当然切割完图片还不够,需要配合合适的延伸方法才可以
+
+拉伸(stretch) 将四边图片背景进行拉伸(即demo2相同)
+
+平铺(round) 将四边图片进行平铺,首先会计算是否会以整数个四边背景平铺,如果不能整齐的平铺,则会将四边图片合理的缩小一些,在进行平铺
+
+[demo3](/assets/download/border-image-demo3.html)
+
+重复(repeat) 直接简单的将四边背景进行重复,边缘可能会出现残缺
+
+[demo4](/assets/download/border-image-demo4.html)
+
+
+## border-colors
+
+给边框叠加不同颜色(目前只有火狐下实现了 还需要添加浏览器内核前缀)
+
+[demo](/assets/download/border-colors.html)
+
+
+```css
+border-top-colors: red pink yellow green;
+/* 可以叠加n种颜色,可重复,颜色之间用空格隔开 */
+```
+
+还有注意是colors 不是 color
+
+## 渐变
+
+CSS3 Gradient 分为 linear-gradient（线性渐变）和 radial-gradient（径向渐变）。而我们今天主要是针对线性渐变来剖析其具体的用法。
+
+### 线性渐变
+
+渐变还是作为盒子背景实现的,所以需要在background-image中实现
+
+线性渐变第一参数需要指明一个方向,这个方向可以是上下左右,也可以是左上左下右上下。还支持一种使用deg(偏转度数)
+
+如果不写第一个参数,那么默认方向是从上到下
+
+先写一个简单的从顶向下的渐变
+
+```css
+.box{background-image:linear-gradient:top,red,blue;}
+/* 从上到下由红色渐变成蓝色 */
+```
+
+[demo](/assets/download/linear-gradient1.html)
+
+当然如果是左上呢
+
+```css
+.box{background-image:linear-gradient:top left,red,blue;}
+/* 第二个方向用空格隔开 */
+```
+
+那么我们再看deg(多数时候使用的都是deg,因为比较自由),当0deg的时候方向是从左到右
+
+```css
+.box{background-image:linear-gradient:30deg,red,blue;}
+/* 正deg从X轴逆时针旋转,负deg从X轴顺时针旋转 */
+```
+
+第一个参数之后就全部是渐变的颜色,这个颜色什么时候开始渐变的参数了
+
+
+```css
+.box{background-image:linear-gradient(45deg,red 160px,blue 480px,yellow 960px);}
+```
+
+[demo](/assets/download/linear-gradient2.html)
+
+这是什么意思呢？
+我根据张鑫旭的博客中[深入理解CSS3 gradient斜向线性渐变](http://www.zhangxinxu.com/wordpress/2013/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3css3-gradient%E6%96%9C%E5%90%91%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98/)这篇文章画了了这么张图
+
+![picshoot](/assets/img/linear-gradient.png)
+
+其中的160px、480px、960px都是从起始点到渐变起点和渐变终点的距离
+
+当然起始点可能画的不准确,但是这里主要解释的是原理
+
+这里一定要注意两点,越后面的开始渐变的参数一定要比前面的参数大,不然就不会出现渐变效果。同时也不能超出盒子的范围,不然就看不到这个渐变色了
+
+线性渐变里面还支持一个repeating-linear-gradient平铺渐变
+
+只要在渐变的前面加上repeating就可以实现重复渐变的效果
+
+```css
+.box{background-image:repeating-linear-gradient(45deg,red 160px,blue 480px,yellow 960px);}
+```
+
+[demo](/assets/download/linear-gradient3.html)
+
+线性渐变现在兼容情况还可以,不需要加浏览器内核前缀
+
+### 径向渐变
+
+径向渐变内容大致和线性渐变内容差不多,但有不同,还有就是兼容性没有线性渐变好,需要加浏览器内核前缀。
+我们先来看下一个简单的小[demo](/assets/download/radial-gradient1.html)
+
+
+```css
+.box{background-image:radial-gradient(red,blue);}
+```
+
+如果不给径向渐变设置方向,那么它的默认点就是在盒子的中心向两边渐变
+
+和线性渐变一样,径向渐变的第一个参数也是设置他的渐变方向,但是和线性渐变不同的是,径向渐变没有deg单位了,只支持英文关键字、坐标或者百分比
+
+比如说左上角
+
+```css
+.box{background-image:radial-gradient(left top,red,blue);}
+```
+
+坐标和盒子模型的坐标是一样的,百分比也是相对于盒子的尺寸来决定的
+
+坐标写法支持1到2个参数,如果只有一个参数那么X轴根据参数来,Y轴则是原来的盒子高度的一半
+
+```css
+.box{background-image:radial-gradient(160px,red,blue);}
+```
+什么意思呢？一开始如果不设置任何参数,那么默认渐变的起点是盒子的中心点,现在只写一个参数,则只改变了X的坐标,但是Y轴还是原来的位置也就是盒子高度的一半
+
+[demo](/assets/download/radial-gradient2.html)
+
+两个坐标就是分别设置XY的坐标了
+
+```css
+.box{background-image:radial-gradient(160px 160px,red,blue);}
+```
+
+[demo](/assets/download/radial-gradient3.html)
+
+百分比就是对应的盒子的百分比,和上面坐标规则也是一样的,这里就不再赘余
+
+除了设置渐变点坐标,我们还可以设置渐变的形状,Css3支持两种形状
+
+ellipse 椭圆
+circle  圆
+
+默认是椭圆,我们可以把它设置成圆
+
+
+```css
+.box{background-image:radial-gradient(160px 160px,circle,red,blue);}
+```
+
+[demo](/assets/download/radial-gradient4.html)
+
+我们还可以直接为他的形状设置大小,其中100px是椭圆的a 20px是椭圆的b,如果要是圆的话只要设置相同就可以了
+
+
+```css
+.box{background-image:radial-gradient(160px 160px,100px 20px,red,blue);}
+```
+
+[demo](/assets/download/radial-gradient5.html)
+
+但是本人测试的时候火狐下不支持,(demo我还是做了火狐的兼容)
+
+渐变点位置还可以使用关键字实现
+
+closest-side
+closest-corner
+farthest-side
+farthest-corner
+contain or cover
+
+
+```css
+.box{background-image:radial-gradient(closest-side,100px 20px,red,blue);}
+```
+
+这个也用的不多,大家有兴趣可以试试
+
+## background新增属性
+
+### background-size
+
+我们可以根据这属性来设置盒子背景的大小
+
+background-size:宽度 高度
+
+
+```css
+.box{background-size:160px 60px;}
+```
+
+还可以调两个值
+
+cover 将整个盒子填满(如果宽度和高度不够大则进行等比放大,如果背景大于盒子则有裁切)
+
+contain 完全填入整个盒子(如果背景比盒子小则不处理,如果比盒子大泽进行等比缩小)
+
+如果一个盒子有多个背景,不同背景的大小用逗号隔开
+
+```css
+.box{
+		background:url(1.png),url(2.png);
+		background-size:160px 60px,contain;
+	}
+```
+
+### background-origin
+
+通过这个属性我们可以设置背景图的起始点这么三个属性
+border-box： 从border区域开始显示背景。 
+padding-box： 从padding区域开始显示背景。(初始值) 
+content-box： 从content区域开始显示背景。
+
+[border-box](/assets/download/background-origin1.html)
+[padding-box](/assets/download/background-origin2.html)
+[content-box](/assets/download/background-origin3.html)
+
+### background-clip
+
+通过这个属性我们可以设置背景图的显示的区域(和origin的区别是clip只能显示某一区域的背景,而origin只是调节了背景的起始位置,通过背景位移还是能够显现的)
+
+border-box： 从border区域开始向内显示背景。 [demo](/assets/download/background-clip1.html)
+padding-box： 从padding区开始向内显示背景 [demo](/assets/download/background-clip2.html)
+content-box： 只content区域背景。 [demo](/assets/download/background-clip3.html)
+
+-webkit-text： 剪裁非文字区域(暂时只有webkit支持) [demo](/assets/download/background-clip4.html)
+
+## mask
+
+我们可以使用一个背景图片(一定要支持透明的png)来作为一个遮罩层来遮罩背景
+
+```css
+.box{
+		url(mask.png) no-repeat 30px 20px;
+	}
+```
+用法和Background差不多
+
+## transition
+
+终于开始Css3最重要,也是最梦幻的动画部分
+
+transition(英:过渡)可以让我们在网页中显示两个状态的变化过程
+
+[demo](/assets/download/transition1.html)
+
+上面这个圆设置了:hover属性和transition:1s,这样从正常到hover状态之间的变化就会以动画的形式过渡
+
+全过度:transition: 过渡的时间 延迟执行时间 不需要过渡的属性 过渡的形式
+
+运动的形式包括
+
+ease：(逐渐变慢)默认值
+linear：(匀速)
+ease-in：(加速)
+ease-out：(减速)
+ease-in-out：(先加速后减速)
+cubic-bezier 贝塞尔曲线( x1, y1, x2, y2 ) 
+
+[自动生成贝塞尔曲线参数](http://xuanfengge.com/easeing/ceaser/)
+
+如果我们需要进行多样式过度
+
+transition: 过渡的时间 延迟执行时间 参与过度的属性 过渡的形式,...
+
+
+```css
+.box{
+		transition:1s width ease-out,2s 1s height ease-in-out, 3s background;
+	}
+```
+
+[demo](/assets/download/transition2.html)
+
+运动流程是这样的:
+
+一开始的1s钟内,宽度和背景先开始改变,但是高度不变(因为高度延迟了1s),接下来宽度到达500px停止改变,接下来的2秒钟内,背景继续变化到红色,高度开始从200px改变到300px
+
+当鼠标退出hover区之后,也是宽度和背景开始变,然后再是高度
+
+### caveats
+
+① transition 目前对display并不支持,如果你的属性中有display 之间的变换的话,那么所有的过渡效果都会消失
+
+② transition 一定是在页面元素渲染完成之后才能起效果的，如果，使用了js 动态的添加了页面元素，一定要等到全部元素添加完后，在添加transition动画
+
+### transition事件
+
+我们可以监听过渡动画,结束之后触发TransitionEnd事件
+
+```javascript
+obj.addEventListener('transitionend',fn,false);
+```
+
+而这个事件一定要使用removeEventListener来移除
+
+
+```javascript
+obj.removeEventListener('transitionend',fn,false);
+```
+
+其中fn为回调函数
+
+## transform
+
+我们可以通过transform属性操作对盒子的变换
+
+### 旋转rotate
+
+
+```css
+.box{trasition:1s; }
+.box:hover{ transform:rotate:(45deg);}
+```
+
+当鼠标移动到盒子上时,盒子就会从中心点顺时针旋转45deg
+
+[demo](/assets/download/transform1.html)
+
+### 旋转原点transform-origin
+
+如果我们给其再加上`transform-origin`就会改变旋转点位置
+依据什么来改变呢？
+
+这个属性可以接收一到两个参数,两个参数的时候分别对应X轴和Y轴,一个参数的时候,代表XY轴同时改变,也就是在对角线上
+
+如果我们不设置transform-origin属性的时候,旋转默认的点是盒子的中心点,但是如果我们设置了这个属性,希望能改变旋转原点的时候,那么浏览器就以盒子的左上角为原点来计算,也就是说,如果transform-origin设置为0那么盒子就会按照左上角进行旋转
+
+[demo](/assets/download/transform2.html)
+
+
+如果我们像这样给其设置X Y的值
+
+```css
+.box{trasition:1s; }
+.box:hover{ transform:rotate:(45deg); transform-origin:20% 30%;}
+```
+
+那么就会根据设置的值计算出相应的旋转点,来进行旋转
+
+
+### 斜切skew
+
+我们现在可以再保证盒子还是四边形的情况下随意的改变他的形状了
+只要通过`transform`的斜切就能实现
+
+```css
+.box{transform:skewX(45deg); }
+```
+
+[demo](/assets/download/transform3.html)
+
+这样就能实现在X轴方向上顺时针45deg实现斜切
+
+当然我们也可以用skewY实现在Y轴上的斜切
+
+如果我们使用skew就能在两个方向同时进行斜切了
+
+
+```css
+.box{transform:skew(45deg,30deg); }
+```
+
+### scale缩放
+
+我们还可以使用scale来任意的缩放盒子的宽高
+用处和zoom很像
+
+```css
+.box{transform:scale(.5); }
+```
+
+这样就能使盒子缩小一倍
+
+[demo](/assets/download/transform4.html)
+
+但是和zoom比较来看,两者除了兼容性之外还有一些不同的地方。zoom缩放会将元素保持在左上角，而scale默认是中间位置，可以通过transform-origin来设置。
+另外他们执行的渲染顺序也不同zoom可能影响到盒子的计算。
+
+和斜切差不多,缩放也可以分别对X轴和Y轴进行控制
+
+分别对scaleX 和 scaleY设置缩放倍数就能实现,单独对一方面进行缩放控制  
+
+### translate位移
+
+可以使盒子进行位置的移动,看起来和通过position:absolute 来控制 top left bottom right差不多
+
+translate和上面几个属性都一样,也支持XY单方面或者双方面
+
+
+```css
+.box{transform:translate(-100em,200em); }
+```
+
+这样就可以使盒子像左下方移动了,移动的基准点也是盒子的左上角
+
+[demo](/assets/download/transform5.html)
+
+其次也可以单独对其设置translateX 和 translateY
+
+### transform的一些问题
+
+如果有多个需要变换的属性,可以这样连写
+
+```css
+.box{transform:rotate(45deg) scale(.2) skew(45deg) translate(-100em,200em); }
+```
+
+还有一个就是执行顺序问题,先写的样式会先执行,如果是想scale 和 skew 会改变盒子结构和基准点的属性,那么后写的rotate 或者 translate的执行效果会不相同
+
+例如:
+
+```css
+body:hover .box:nth-of-type(1){ transform:translateX(100px) scale(0.5);}
+body:hover .box:nth-of-type(2){ transform:scale(0.5) translateX(100px);}
+```
+
+[demo](/assets/download/transform6.html)
+
+这里我给两个盒子添加的样式相同但是顺序不同,但是出现的结果是盒子2少位移了50px
+其原因就是因为,第二个盒子是先缩放后位移,在位移前已经缩放了一倍了,所以之后的位移会根据正在缩放的盒子来位移就少了25px,而第一个盒子,是先位移后缩放,又多位移了25px,一加一减正好50px
+
+(以上结果我是根据FSCapture来测量的,但是问题出现的原因本人也难说清)
+
+### 表盘
+
+根据上面的只是我们可以结合Css3 和 Js制作一个时钟表盘
+
+[demo](/assets/download/Css3clock.html)
+
+### 使用Css3制作一个列表
+
+[demo](/assets/download/Css3-home-Lists.html)
+
+需要注意: 列表弹出,弹入 点击的时候都需要修改每个按钮的过渡(是否需要延迟时间)
+
+## 3D-transform
+
+Css3甚至还推出了3D变换场景,
+
+包括:3D旋转和位移,哦对了还有一个Perspective(景深透视),有点美术功底的同学当然不难了解了
+
+当我们给一个元素设置了`transform-style:preserve-3d`后
+
+```css
+perspective:500px;             /*景深透视*/
+transform-style:preserve-3d;  /*3D场景*/
+```
+
+就可以对其下的子元素进行3D变换了(注意transform-style:preserve-3d只会影响子元素)
+
+### rotateXYZ
+
+关于立体旋转,首先我们来看一张图
+
+![shootpic](/assets/img/3D-rotate.png)
+
+首先最基本的rotateX和rotateY分别是正对屏幕和侧对屏幕进行旋转
+
+初学者的一个难点就是分不清顺逆方向,
+
+其实很简单,你视角转换一下,顺着X轴相对的方向和Y轴相对的方向来看
+
+![shootpic](/assets/img/3D-rotate2.png)
+
+这里以顺着Y轴旋转盒子为例,X轴同理
+
+Z轴旋转也就是和我们在2D环境下旋转盒子是一样的
+
+### translateZ
+
+设置了translateZ就会使盒子像垂直屏幕方向进行移动,如果是正值,则向外,负值向里
+并且遵从近大远小的原则
+
+### perspective
+
+景深即一个舞台 观众到舞台间的距离
+
+景深设置的越大,观众离舞台越近,所看的事物就越大,越小离得就远,看到的事物就越小
+(近大远小)
+
+布局方面一般怎么布局3D场景呢？
+
+
+```html
+<舞台盒子>
+	<3D场景盒子>
+		<进行3D切换的图片1>
+		<进行3D切换的图片2>
+		<进行3D切换的图片3>
+		<进行3D切换的图片4>
+	</3D场景盒子>
+</舞台盒子>
+```
+
+景深perspective 一定要给舞台盒子设置,也就是用户从浏览器看3D场景的距离,
+transform-style:preserve-3d 3D场景给3D场景设置,并且要设置好转动轴的坐标
+然后对需要进行3D切换的图片进行各种3D转换,布局就算完事了。
+
+最后在通过程序添加效果就OK了
+
+为了更好的了解景深,请看这个[demo](/assets/download/3d.html)
+
+【兼容最新的火狐 chrome 欧鹏 不支持苹果和360】
+
+这里我给整个舞台`.stage`设置了500px的景深,因为我的图片比较大
+
+正常如果图片不是很大一般都是800px
+
+然后设置整个3D场景盒子的旋转轴坐标使其旋转点居中
+
+```css
+transform-origin:center center -1492.8px;
+```
+
+让他居中,然后给每个图片设置各种3D变换
+最后在给每张图片添加点击事件,这样就算完事了
+
+## 3D图片实例
+
+[demo1](/assets/download/3D-pics.html)
+
+[demo2](/assets/download/pics.html)
+【兼容最新的火狐 chrome 欧鹏 不支持苹果和360】
+
+## animation
+
+Css3 实现动画的第二大属性,实现是通过添加动画帧来实现
+
+```css
+@keyframes show1{
+	0%{
+		background:red;
+	}
+	50%{
+		background:blue;
+	}
+	100%{
+		background:pink;
+	}
+}
+```
+
+当我们在Css3中添加如上动画帧之后就可以在盒子的样式中调用了
+
+```css
+.show1{animation:2s show1 linear;}
+```
+
+
+```javascript
+var oBox = document.querySelector(".box");
+
+oBox.onclick = function()
+{
+	oBox.className = "box show1";
+}
+```
+
+这样就能看到如下效果[demo](/assets/download/animation_box.html)
+
+那么具体的动画应该怎么的调用呢？
+
+animation: 动画总时间 延迟时间 调用的动画帧名 运动形式 重复执行次数(infinite 无限次播放) 动画效果可见状态 动画执行顺序
+
+看起来和transition也差不多
+
+### animation-fill-mode
+
+但是,这里有个一个问题,细心的同学在上一个demo里面已经发现了
+那就是动画结束后,盒子又回到了红色,这是什么原因呢？
+
+这是因为Css3默认动画结束以后返回这个盒子原本的样式
+
+如果我们需要让他保持结束后的状态,只需要添加forwards就可以了
+
+```javascript
+.show1{animation:2s show1 forwards linear;}
+```
+
+（1）none：默认值，回到动画没开始时的状态。
+（2）backwards：让动画回到第一帧的状态。
+（3）forwards: 让动画保持在最后停止的状态。
+（4）both: 根据animation-direction（见后）轮流应用forwards和backwards规则。
+
+### animation-direction
+
+这个属性可以让我们设置动画的执行次序
+
+缺省值为normal
+
+其他可选值分别为:
+alternate: 跳次播放,动画在奇数次（1、3、5...）正向播放(0%到100%),在偶数次（2、4、6...）反向播放（100%到0%）。,结合播放设置播放次数使用
+reverse: 反序播放 从100%到0%
+alternate-reverse: 反序跳次播放 
+动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。
+
+### animation-play-state
+
+我们还可以实时的控制动画的暂停和播放,可以通过修改animation-play-state来实现
+
+当盒子添加了
+
+```css
+animation-play-state: paused;
+```
+
+那么当前的动画就会暂停
+
+如果给盒子添加了
+
+```css
+animation-play-state: running;
+```
+
+那么当前暂停的动画就会继续播放
+
+### animationEnd事件
+
+使用js来控制这个盒子的类,Css3允许我们通过js来监控动画是否完成
+这里就得介绍animationEnd事件了
+
+
+```javascript
+var oBox = document.querySelector(".box");
+		var boff = true;
+		oBox.onclick = function()
+		{
+			if(boff)
+			{
+				oBox.className = "box show1";
+			}else{
+				return ;
+			}
+		}
+		oBox.addEventListener("webkitAnimationEnd",fn,false);
+		// 同时兼容chrome safari Opera
+
+
+		oBox.addEventListener("animationEnd",fn,false);
+		
+		function fn()
+		{
+			oBox.className = "box show2";
+		}
+},false)
+```
+
+然后我们在添加一个show2的动画帧
+
+```css
+@keyframes show2{
+	0%{
+		background:pink;
+	}
+	50%{
+		background:blue;
+	}
+	100%{
+		background:red;
+	}
+}
+.show2{animation:1s show2 linear;}
+```
+
+这样就能使盒子有个良好的过度了[demo](/assets/download/animation_box2.html)
+
+但是可能有同学会有疑问,我在切换成show2动画后,当我从粉色变成红色的时候,动画再次结束
+并且再次执行了fn函数,为什么show2动画没有再次执行呢？那是因为我没有给show2 的animation设置执行次数呀,所以即使我再次修改了类名,也同样只执行之前的仅仅一次
+
+还有动画事件不知道为什么现在暂时不支持火狐浏览器=_=
+
+其实动画不只有End事件
+
+开始事件 animationStart 
+结束事件 animationEnd 
+重复运动事件 animationIteration 
+
+大伙可以挨个去实验实验吧
+
+### animation图片切换实例
+
+[demo](/assets/download/3D-pics-change.html)
+
+### 仿智能社碎片切换banner
+
+[demo](/assets/download/zhinengshe-demo.html)
+
+## will-change加速
+
+我们平时加载浏览器页面的时候默认使用基本上都是CPU来加载
+如果遇到一些页面需要加载Css3的动画的话,那么难免会是CPU负担加重,如果CPU比较差的话,还可能使页面崩溃
+
+所以我们可以试试使用GPU(Graphics Processing Unit)也就是位于显卡上的图像处理器来进行3d动画的加载
+
+但是这也是有代价的,不代表使用GPU加载也会占用RAM和GPU的存储空间(移动端有限)
+所以尽量应该在需要的地方使用
+
+那么怎么告诉浏览器,哪里需要用到GPU硬件加速,哪里不用
+那么使用Css3 的 will-change属性
+
+
+```css
+will-change:transform,opacity;
+/*多个样式以逗号隔开*/
+```
+
+这样,当一个盒子里面有这么些变化的时候,就会启用GPU来加速页面渲染的效果
+
+还有一点,就是我们需要给浏览器充足的时间来完成从CPU到GPU的转变
+
+```css
+
+也就是说我们要以这种写法
+.box{will-change:transform,transition;}
+.box:hover{transform:rotateY(45deg);transition:1s;}
+
+来代替这种写法
+.box:hover{
+	will-change:transform,transition;
+	transform:rotateY(45deg);
+	transition:1s;
+}
+```
+
+如果我们要关闭will-change,就可以使用js监听来清除
+
+例如一个点击触发的动画效果
+
+```javascript
+var el = document.getElementById('element');
+
+el.addEventListener('mouseenter', hintBrowser);
+el.addEventListener('animationEnd', removeHint);
+
+function hintBrowser() {
+    this.style.willChange = 'transform, opacity';
+}
+
+function removeHint() {
+    this.style.willChange = 'auto';
+}
+```
+
+你还可以在[CSS will-change 属性](http://www.cnblogs.com/yuzhongwusan/p/4186405.html)
+得到更详细的关于CSS will-change的说明
+
+## userSelect
+
+有些时候我们制作了一些按钮类的特效,在测试的时候会触发选中文本的效果,弄得一大块蓝整个UI都不好不好的了。
+
+要解决这个方法可以使用JS来解决
+
+```javascript
+onselectstart = function(){
+	return false;
+}
+```
+
+但是现在CSS3推出了一个新的方法userSelect,我们可以直接设置为none就可以不让用户选中文本
+
+```css
+user-select:none;
+```
+
+除了none以外,user-select还支持如下几个值
+text:可以选择文本(缺省)
+all:当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+element:可以选择文本，但选择范围受元素边界的约束
+
+至今还需要添加浏览器内核前缀
+
+## calc
+
+Css3 还可以使用calc()来计算各种属性的值.
+
+例如
+
+```css
+box{ width:calc(100% + 20px);}
+```
+
+这里100%就先获取父级的宽度,然后在加20px,calc()支持不同单位的自动换算,也就是说我们以后工作完全可以把计算的任务大部分丢给calc
+
+那么calc() 是怎么使用的呢？
+
+calc支持 + - * / 四种运算 不支持%;
+其中+-运算两个运算符号之间一定要用空格隔开
+即 `运算成员 空格 + 空格 运算成员`
+
+但是乘法和除法却无这样的规则(感觉是个bug,但是建议写法统一)
+
+## 滤镜
+
+Css3还提供了滤镜功能,让我们实现一些对图片甚至插入的video标签进行类似ps的效果
+
+可以实现的效果有这些
+
+grayscale        	灰度     (把图片变为黑白色,灰度越大,黑色程度越深,默认值是100%)
+
+sepia            	色偏     (使图片变得古老,色偏越大,古老程度越深,默认值是100%)
+
+saturate          饱和度   (色彩饱和度)
+
+hue-rotate        色相旋转 (改变图片色相,默认值为0deg)
+
+invert            反色     (255-当前rgb的值取反色,默认值是100%)
+
+opacity           透明度   (图片透明程度)
+
+brightness        亮度     (图片显示的局部亮度)
+
+contrast          对比度   (设置图片对比度,默认值是100%)
+
+blur              模糊     (使图片变得模糊不清,很实用的一个属性默认值是0)
+
+drop-shadow       阴影     (类似box-shadow,为图片添加阴影)
+
+虽然这些很艺术的东西一般都是UI妹纸去做的,但是,我们也需要了解一下,毕竟如果有时候真的要用到,也不可能老是去麻烦人家(众:...怪不得泡不到妹子)
+
+从网上扒了张图下来,让我们看看具体实现的效果
+ 
+![pic](/assets/img/filter-demo.png)
+
+那么具体应该如何实现这些功能呢？
+
+
+除了色相偏转 是filter:hue-rotate(角度deg)
+
+和模糊 是filter:blur(像素)
+
+其他所有的效果都是采用 filter:属性名(百分比对应的小数值)来实现的,例如
+
+
+```css
+.img{filter:saturate(0.5);}
+/*设置饱和度为一半*/
+```
+
+现在滤镜的兼容性依然很差所以还是要添加上浏览器内核前缀
+
+我们可以使用滤镜这个属性来做一点小效果出来
+
+[模糊按钮demo](/assets/download/filter-demo.html)
+
+依然不支持苹果和360
+
+
+## 使用css3 + clip + ab伪类 做的一些小特效
+
+[demo](/assets/download/clipme.html)
+
+clip 是css2.0就支持的一个属性，用于切割显示 有兴趣的可以参考
+[张鑫旭的CSS clip:rect矩形剪裁功能及一些应用介绍](http://www.zhangxinxu.com/wordpress/2011/04/css-clip-rect/)
+
+after 和 before伪类就不多提了
+
+## 使用appearance修改浏览器的默认样式
+
+appearance 
+
+http://www.w3cplus.com/css3/changing-appearance-of-element-with-css3.html
+
+## mix-blend-mode 和 background-blend-mode
+
+1 会将设置了此属性的元素层级下的元素进行混合渲染
+
+2 如果层级下的元素产生了层叠上下文，则无法混合渲染
+
+包括
+
+```
+1 transfrom
+2 opacity 不为1
+3 will-change
+4 position: fixed + z-index
+5 mix-blend-mode
+6 filter
+7 isolation: isolate
+```
+
+则 两个元素之间不会进行混合渲染
+
+background-blend-mode 则是一个完全封闭的空间，能够将两个背景混合渲染（不会影响到其他元素）
+
+## @support
+
+Css3 提供了@support 来让我们进行优雅降级处理
+
+```css
+/* 如果新属性在浏览器中是支持的 则返回true 则下面的css 属性会被bind
+如果不支持，则{} 中的css 属性不会被bind */
+@support(新属性) {
+}
+
+// 可以逻辑取反
+@support not (新属性) {
+
+}
+
+// 有且只有两个属性都支持的时候才会bind
+@support(新属性1) and (新属性2) {
+
+}
+
+// 当有一个属性支持的时候就会bind
+@support(新属性1) or (新属性2) {
+}
+
+```
+
+## 实现首字下沉
+
+```
+1 ::first-letter + float: left or right
+2 safari 下的inital-letter (兼容性不行)
+inital-letter: 首字行高 下沉程度;
+```
+
+## 弹性动画帧，开箱即用
+
+```scss
+@function spring-wobbly ($t) {
+  @return -0.5 * pow(2.71828, (-6 * $t)) * (-2 * pow(2.71828, (6 * $t))  + sin(12 * $t) + 2 * cos(12 * $t));
+}
+
+/* 线性插值补间 */
+@function lerp ($a, $b, $p) {
+  @return $a + $p * ($b - $a);
+}
+
+@keyframes wobble {
+  @for $i from 0 through 100 {
+    $t: lerp(0, 1, spring-wobbly($i / 100));
+    // 这里可以不单单是形变，也可以是 opacity 或者 translate
+    transform: scale(#{$t}, #{$t});
+  }
+}
+```
+
+
+## 如何使一个3d 层 正反面渲染
+
+```
+A, B {
+  position: absolute;
+  width: 100%;
+  heigth: 100%;
+  backface-visibility: hidden;
+}
+
+A {
+  z-index: 2;
+}
+
+B {
+  transform: rotateY(180deg);
+}
+
+C {
+  transform-style: preserve-3d;
+}
+
+D {
+  perspective: 800px;
+}
+
+
+<D>
+  <C>
+    <A></A>
+    <B></B>
+  </C>
+</D>
+```
+
+## 纯css 绘制进度条
+
+https://juejin.im/post/5c35953ce51d45523f04b6d2
+
+## Element Query CSS
+
+是一个基于css 媒体查询理念+jquery的库，可以用于各种css查询
+
+## 感谢
+
+[妙味课堂](www.miaov.com)
+
+[张鑫旭的博客](http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%E5%B1%9E%E6%80%A7%EF%BC%8C%E7%84%B6%E5%90%8E%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E7%AE%80%E4%BB%8B/)
+
+[CSS3系列教程:HSL 和HSLA](http://www.hen9hen9.com/seo/html/?658.html)
+
+[zhaoran关于box-sizing的解释](http://www.cnblogs.com/zhaoran/archive/2013/05/24/3097482.html)
+
+[web骇客 关于分栏式布局的用法](http://www.webhek.com/css3-multi-columns)
+
+[CSS中zoom和scale的区别](http://www.cnblogs.com/qingxinblog/articles/4495393.html)
+
+[CSS3 3D transform变换，不过如此!](http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/)
+
+[CSS will-change 属性](http://www.cnblogs.com/yuzhongwusan/p/4186405.html)
+
+[css3 Animation事件](http://blog.csdn.net/kongjiea/article/details/38614695)
+
+[CSS3 animation-direction 属性](http://outofmemory.cn/css/reference/css3-pr-animation-direction.html)
+
+[Css3动画 阮一峰](http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html)
+
+[张鑫旭-CSS3 Filter的十种特效](http://www.w3cplus.com/css3/ten-effects-with-css3-filter)
