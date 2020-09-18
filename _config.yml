@@ -18,7 +18,7 @@ texture:
   title: AzureWind 的个人博客
   tagline: 画船听雨眠
   date_format: "%b %-d, %Y"
-  style: Orange
+  style: black
   showNav: true
   showPicker: false
 
