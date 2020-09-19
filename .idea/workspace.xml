@@ -20,57 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/.github/FUNDING.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/404.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CNAME" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/analytics.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/disqus.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/fonts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/gitalk.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/head.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/meta.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/nav.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/svg-icons.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/toc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_includes/utteranc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_layouts/default.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_layouts/page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_layouts/post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2013-07-16-chinese-markdown-cheatsheet.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2019-06-02-document.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2019-07-24-math-test.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_sass/_gitalk.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_sass/_highlights.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_sass/_open-color.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_sass/_reset.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/about.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archive/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/404.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Disqus-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Disqus-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Disqus-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Disqus-plan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Typora.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/application_settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/config.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/fork.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/givemefive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/nameyourbolg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/pages.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/published.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/rename.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/usetemplate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,13 +45,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Jekyll-Paper-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\poison0.github.io\_posts" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -113,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600442253447</updated>
       <workItem from="1600442255958" duration="3125000" />
-      <workItem from="1600515588508" duration="2227000" />
+      <workItem from="1600515588508" duration="2829000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1600442802157</created>
@@ -199,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1600518946038</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="init">
+      <created>1600518995331</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1600518995331</updated>
+    </task>
+    <task id="LOCAL-00014" summary="init">
+      <created>1600519471603</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1600519471603</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,13 +197,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600516101096" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1600518982199">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1600519479159">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600518982199" />
-    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1600444765552">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600519479159" />
+    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1600519562650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="661" y="252" width="598" height="536" key="find.popup/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600444765552" />
+    <state x="661" y="252" width="598" height="536" key="find.popup/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600519562650" />
   </component>
 </project>
