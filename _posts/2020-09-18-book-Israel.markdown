@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 以色列：一个民族的崛起
+title: 《以色列：一个民族的崛起》读书笔记
 keywords: 历史
 date: 2020-09-20
 Author: AzureWind
