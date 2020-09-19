@@ -34,8 +34,8 @@ favicon: https://github.com/poison0/poison0.github.io/blob/master/images/favicon
 navigation:
   - name: 首页
     url: /
-  - name: 关于
-    url: /about
+#  - name: 关于
+#    url: /about
   - name: 归档
     url: /archive
   - name: 标签
