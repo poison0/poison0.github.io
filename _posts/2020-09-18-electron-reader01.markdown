@@ -8,7 +8,7 @@ tags: [epub,document]
 comments: true
 ---
 基于electron的web项目-桌面级epub阅读器，代码已在gitHub开源。
-
+<!-- more -->
 代码仓库：[Nread](https://github.com/poison0/Nreader)
 ### 技术栈
 *   [electron](https://github.com/electron/electron)
