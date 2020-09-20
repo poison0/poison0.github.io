@@ -4,7 +4,7 @@ title: Electron开发实战——本地epub阅读器(简介)
 keywords: 技术,electron,epub
 date: 2020-09-18
 Author: AzureWind
-tags: [epub,document]
+tags: [electron]
 comments: true
 ---
 基于electron的web项目-桌面级epub阅读器，代码已在gitHub开源。
