@@ -2,7 +2,7 @@
 layout: post
 title: Electron开发实战——本地epub阅读器(引入lowDb)
 keywords: 技术,electron,epub
-date: 2020-09-18
+date: 2020-09-22
 Author: AzureWind
 tags: [electron]
 comments: true
