@@ -73,11 +73,11 @@ public class test33 {
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         res.add(new ArrayList<>());
-        for (int i = 0; i < nums.length; i++) {
+        for(int num: nums){
             int size = res.size();
             for (int j = 0; j < size; j++) {
                 List<Integer> item = new ArrayList<>(res.get(j));
-                item.add(nums[i]);
+                item.add(num);
                 res.add(item);
             }
         }
