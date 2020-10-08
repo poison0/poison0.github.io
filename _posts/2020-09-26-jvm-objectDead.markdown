@@ -29,7 +29,7 @@ GC是jvm中最重要的组成部分之一，程序运行时，内存资源总是
 当前主流的商用程序语言的内存管理系统都是通过可达性分析算法来判断对象是否是存活的。可达性分析的基本思路是通过一系列的“GC Roots”的根对象
 作为起始节点集，通过引用关系向下搜索，走过的路径称为“引用链”，如果某个对象不在“引用链”上，那么这个对象就会被认为不可达，可以被回收掉了。  
 
-![引用链](https://github.com/poison0/poison0.github.io/blob/master/images/gcRoots.png)
+![引用链](https://github.com/poison0/poison0.github.io/blob/master/images/gcRoots.png?raw=true)
 
 在java中，固定可作为GC Roots的对象包含以下几种
 1.虚拟机栈引用的对象。  
