@@ -1,0 +1,34 @@
+---
+layout: post
+title: 尝试用Optional取代null
+keywords: 技术,java
+date: 2020-10-08
+Author: AzureWind
+tags: [java]
+comments: true
+---
+java8 用Optional取代null
+
+<!-- more --> 
+## null引发的问题
+  对于一个java程序员，最常遭遇的异常毫无疑问应该是NullPointerException，无论对于新人，还是久经江湖的
+  专家，NullPointerException都应该是永久的痛。  
+  
+  1965年，英国的一位计算机科学家托尼·霍尔在设计ALGOL语言时，加入了null引用，仅仅是因为实现起来非常容易
+  它后来成为许多程序设计语言的标准特性，导致了数不清的错误、漏洞和系统崩溃，可能在之后40年中造成了十亿美元的损失。
+  2009年3月他在Qcon技术会议上发表了题为“Null引用：代价十亿美元的错误”的演讲。  
+  
+#### 在java中，null会带来各种各样的问题：  
+   * NullPointerException 是目前java中最可能出现，最典型的异常。
+   * 他会使代码充斥这深度嵌套的null检查，可读性极差。
+   * null本身毫无意义，没有任何语义。
+   * java一直试图避免让程序员意识到指针的存在，而null指针却是一个例外。
+   * null不属于任何类型，因此它可以赋值给任何类型，当传递的值为null时，将无法得到这个值的最初类型。  
+     
+为了很好解决这些问题，java8引入了名为java.util.Optional<T>的一个新类，运用Optional类提供的功能，我们可以设计出更好的api
+
+## 用Optional重写null
+
+## Optional Api的使用
+
+## 思考
