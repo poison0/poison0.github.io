@@ -37,7 +37,7 @@
     function typing () {
       if (i <= str.length) {
         divTyping.innerHTML = str.slice(0, i++) + '|'
-        timer = setTimeout(typing, 500)
+        timer = setTimeout(typing, 300)
       }
       else {
         divTyping.innerHTML = str//结束打字,移除 _ 光标
