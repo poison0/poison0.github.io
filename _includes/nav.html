@@ -30,7 +30,7 @@
   </div>
   <script>
     let divTyping = document.getElementById('siteName')
-    let i = 0, timer = 0, str = 'AzureWind', errorStr = 'AzuraWind',step = 0;
+    let i = 0, timer = 0, str = 'AzureWind', errorStr = 'AzuraWind',step = 0,flashing = 0;
 
     function typing () {
       //阶段一
@@ -64,8 +64,20 @@
           divTyping.innerHTML = str.slice(0, i++) + '_'
           timer = setTimeout(typing, 500)
         }else {
-          divTyping.innerHTML = str//结束打字,移除 _ 光标
-          clearTimeout(timer)
+          if(flashing >= 6){
+            flashing ++
+            divTyping.innerHTML = str
+            timer = setTimeout(typing, 1000)
+            clearTimeout(timer)
+          }else if(flashing%2 === 0){
+            flashing ++
+            divTyping.innerHTML = str
+            timer = setTimeout(typing, 500)
+          }else if(flashing%2 === 1){
+            flashing ++
+            divTyping.innerHTML = str+'_'
+            timer = setTimeout(typing, 1000)
+          }
         }
       }
     }
