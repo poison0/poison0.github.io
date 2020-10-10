@@ -13,7 +13,8 @@ comments: true
 epubjs是直接渲染到选择的DOM节点上的，所以如果熟悉api就非常容易就可以解析并显示出来
 下面是常用的epubjs的api，如果需要了解更多可以跳转到[官网](https://github.com/futurepress/epub.js) 查询
 
-1. 渲染电子书
+1. 渲染电子书   
+
 ```javascript
 //引入epubjs
 import Epub from 'epubjs'
@@ -40,7 +41,8 @@ this.book.ready
 })
 
 ```
-2. 电子书的常用操作
+2. 电子书的常用操作   
+
 ```javascript
 //下一页
 nextPage() {
