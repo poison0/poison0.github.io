@@ -4,9 +4,10 @@
       {% if site.avatar %}
         <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
       {% endif %} 
-      <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-<!--      <p id="description" class="site-description">{{ site.description }}</p>-->
-      <p id="description" class="site-description"></p>
+<!--      <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>-->
+      <h1 id="siteName" class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+      <p  class="site-description">{{ site.description }}</p>
+<!--      <p id="description" class="site-description"></p>-->
     </div>
   </header>
 
@@ -28,15 +29,15 @@
     </footer>
   </div>
   <script>
-    let divTyping = document.getElementById('description')
+    let divTyping = document.getElementById('siteName')
     let i = 0,
             timer = 0,
-            str = '画船听雨眠'
+            str = 'AzureWind'
 
     function typing () {
       if (i <= str.length) {
         divTyping.innerHTML = str.slice(0, i++) + '|'
-        timer = setTimeout(typing, 200)
+        timer = setTimeout(typing, 500)
       }
       else {
         divTyping.innerHTML = str//结束打字,移除 _ 光标
