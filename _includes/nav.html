@@ -66,12 +66,12 @@
         }else {
           if(flashing >= 6){
             flashing ++
-            divTyping.innerHTML = str+" "
+            divTyping.innerHTML = str
             timer = setTimeout(typing, 1000)
             clearTimeout(timer)
           }else if(flashing%2 === 0){
             flashing ++
-            divTyping.innerHTML = str+" "
+            divTyping.innerHTML = str+"&nbsp;"
             timer = setTimeout(typing, 500)
           }else if(flashing%2 === 1){
             flashing ++
