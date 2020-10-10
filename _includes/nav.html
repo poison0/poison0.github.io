@@ -30,18 +30,43 @@
   </div>
   <script>
     let divTyping = document.getElementById('siteName')
-    let i = 0,
-            timer = 0,
-            str = 'AzureWind'
+    let i = 0, timer = 0, str = 'AzureWind', errorStr = 'AzuraWind',step = 0;
 
     function typing () {
-      if (i <= str.length) {
-        divTyping.innerHTML = str.slice(0, i++) + '|'
-        timer = setTimeout(typing, 300)
+      //阶段一
+      if (step === 0) {
+        if (i <= errorStr.length) {
+          if(i === 5){
+            divTyping.innerHTML = errorStr.slice(0, i++) + '_'
+            timer = setTimeout(typing, 500)
+          }else{
+            divTyping.innerHTML = errorStr.slice(0, i++) + '_'
+            timer = setTimeout(typing, 200)
+          }
+        }else{
+          step = 1;
+          timer = setTimeout(typing, 2000)
+        }
       }
-      else {
-        divTyping.innerHTML = str//结束打字,移除 _ 光标
-        clearTimeout(timer)
+      //阶段二
+      if(step === 1){
+        if(i >= 5){
+          divTyping.innerHTML = errorStr.slice(0, i--) + '_'
+          timer = setTimeout(typing, 200)
+        }else{
+          step = 2;
+          timer = setTimeout(typing, 200)
+        }
+      }
+      //阶段三
+      if(step === 2){
+        if(i <= str.length){
+          divTyping.innerHTML = str.slice(0, i++) + '_'
+          timer = setTimeout(typing, 500)
+        }else {
+          divTyping.innerHTML = str//结束打字,移除 _ 光标
+          clearTimeout(timer)
+        }
       }
     }
 
