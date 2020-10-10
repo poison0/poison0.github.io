@@ -69,7 +69,11 @@
         }
       }
     }
-
-    typing()
+    if(window.name === ""){
+      window.name = "isReload";
+      typing()
+    }else{
+      divTyping.innerHTML = str
+    }
   </script>
 </div>
