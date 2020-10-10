@@ -40,4 +40,36 @@ this.book.ready
 })
 
 ```
-2. 常用操作电子书
+2. 电子书的常用操作
+```javascript
+//下一页
+nextPage() {
+    if (this.rendition) {
+        this.rendition.next()
+        this.syncIndex()
+    }
+}
+//上一页
+prevPage() {
+    if (this.rendition) {
+        this.rendition.prev()
+        this.syncIndex()
+    }
+}
+ // 目录跳转
+jumpTo(href) {
+    this.rendition.display(href).then(res => {
+        this.closeAllTable()
+        this.syncIndex()
+    })
+}
+// 切换字号
+setFontSize(size) {
+    if (this.themes) {
+        this.themes.fontSize(size + 'px')
+    }
+},
+// 改变字体
+this.themes.font("微软雅黑")
+```
+
