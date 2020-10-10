@@ -31,7 +31,7 @@ GC是jvm中最重要的组成部分之一，程序运行时，内存资源总是
 
 ![引用链](https://github.com/poison0/poison0.github.io/blob/master/images/gcRoots.png?raw=true)
 
-在java中，固定可作为GC Roots的对象包含以下几种  
+在java中，固定可作为GC Roots的对象包含以下几种：   
 1.虚拟机栈引用的对象。  
 2.方法区中静态属性引用的对象。  
 3.方法区中常量引用的对象。  
