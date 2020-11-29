@@ -30,9 +30,46 @@ vue init simulatedgreg/electron-vue my-project
 #引入ant-design
 npm install ant-design-vue --save
 ```
+安装之后可能会出现 ReferenceError: process is not defined 错误，需要修改.electron-vue/webpack.web.config.js 和.electron-vue/webpack.renderer.config.js中的
+HtmlWebpackPlugin对象内容
+```javascript
+new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve(__dirname, '../src/index.ejs'),
+      templateParameters(compilation, assets, options) {
+        return {
+          compilation: compilation,
+          webpack: compilation.getStats().toJson(),
+          webpackConfig: compilation.options,
+          htmlWebpackPlugin: {
+            files: assets,
+            options: options
+          },
+          process,
+        };
+      },
+      minify: {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true
+      },
+      nodeModules: false
+    })
+```
+
+
 ***注意：*** ant-design可能不会使用时可能不会生效，需要在webpack.renderer.config.js里面加入白名单，才能使用
 ```javascript
-let whiteListedModules = ['vue', 'ant-design-vue']
+let whiteListedModules = [
+            'vue', 
+            'axios',
+            'vue-electron',
+            'vue-router',
+            'vuex',
+            'vuex-electron',
+            'element-ui',
+            'ant-design-vue'
+    ]
 ```
 2.epubjs用来解析epub书籍的，epubjs使用时可能会报错，由于语法问题，需要修改导出的语法
 ![](https://upload-images.jianshu.io/upload_images/18604310-a1e71de1fc93823b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
