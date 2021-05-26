@@ -25,9 +25,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="lowDb">
-      <change afterPath="$PROJECT_DIR$/_posts/2020-09-26-jvm-objectDead.markdown" afterDir="false" />
+    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="class结构分析器">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-01-05-classReader01.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-01-05-classReader01.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +47,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,6 +62,9 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\poison0.github.io\images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\poison0.github.io\images" />
       <recent name="D:\poison0.github.io\_posts" />
@@ -81,56 +86,24 @@
       <workItem from="1600615925716" duration="168000" />
       <workItem from="1600865951244" duration="2002000" />
       <workItem from="1601046060461" duration="614000" />
-      <workItem from="1601090625276" duration="1429000" />
-    </task>
-    <task id="LOCAL-00001" summary="init">
-      <created>1600442802157</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1600442802157</updated>
-    </task>
-    <task id="LOCAL-00002" summary="init">
-      <created>1600442936095</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1600442936095</updated>
-    </task>
-    <task id="LOCAL-00003" summary="init">
-      <created>1600443158242</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1600443158242</updated>
-    </task>
-    <task id="LOCAL-00004" summary="init">
-      <created>1600443524209</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1600443524209</updated>
-    </task>
-    <task id="LOCAL-00005" summary="init">
-      <created>1600443913141</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1600443913141</updated>
-    </task>
-    <task id="LOCAL-00006" summary="init">
-      <created>1600444075934</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1600444075934</updated>
-    </task>
-    <task id="LOCAL-00007" summary="init">
-      <created>1600444287297</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1600444287297</updated>
+      <workItem from="1601090625276" duration="3211000" />
+      <workItem from="1601107097158" duration="598000" />
+      <workItem from="1601131977791" duration="1025000" />
+      <workItem from="1601133156543" duration="601000" />
+      <workItem from="1602167606701" duration="2882000" />
+      <workItem from="1602170540850" duration="674000" />
+      <workItem from="1602341216395" duration="6216000" />
+      <workItem from="1602398212256" duration="326000" />
+      <workItem from="1603627352522" duration="3484000" />
+      <workItem from="1606631168007" duration="739000" />
+      <workItem from="1606631913181" duration="2158000" />
+      <workItem from="1606994157597" duration="18000" />
+      <workItem from="1606996985871" duration="134000" />
+      <workItem from="1607175241941" duration="16000" />
+      <workItem from="1607175831208" duration="31000" />
+      <workItem from="1610461501841" duration="2612000" />
+      <workItem from="1612069951015" duration="2082000" />
+      <workItem from="1613868853520" duration="107000" />
     </task>
     <task id="LOCAL-00008" summary="init">
       <created>1600444775753</created>
@@ -328,7 +301,154 @@
       <option name="project" value="LOCAL" />
       <updated>1600867354238</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="jvm如何判断对象已死">
+      <created>1601092360311</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1601092360311</updated>
+    </task>
+    <task id="LOCAL-00037" summary="jvm如何判断对象已死">
+      <created>1601132004814</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1601132004814</updated>
+    </task>
+    <task id="LOCAL-00038" summary="尝试用Optional取代null">
+      <created>1602169321998</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1602169321998</updated>
+    </task>
+    <task id="LOCAL-00039" summary="可达性分析算法">
+      <created>1602170445892</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1602170445892</updated>
+    </task>
+    <task id="LOCAL-00040" summary="可达性分析算法">
+      <created>1602170556107</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1602170556107</updated>
+    </task>
+    <task id="LOCAL-00041" summary="可达性分析算法">
+      <created>1602170591831</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1602170591831</updated>
+    </task>
+    <task id="LOCAL-00042" summary="电子书的常用操作">
+      <created>1602341294690</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1602341294690</updated>
+    </task>
+    <task id="LOCAL-00043" summary="打字机效果">
+      <created>1602342581476</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1602342581476</updated>
+    </task>
+    <task id="LOCAL-00044" summary="打字机效果">
+      <created>1602342931531</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1602342931531</updated>
+    </task>
+    <task id="LOCAL-00045" summary="打字机效果">
+      <created>1602343212868</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1602343212868</updated>
+    </task>
+    <task id="LOCAL-00046" summary="打字机效果">
+      <created>1602343404572</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1602343404572</updated>
+    </task>
+    <task id="LOCAL-00047" summary="打字机效果">
+      <created>1602346750946</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1602346750946</updated>
+    </task>
+    <task id="LOCAL-00048" summary="打字机效果">
+      <created>1602346856221</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1602346856221</updated>
+    </task>
+    <task id="LOCAL-00049" summary="打字机效果">
+      <created>1602347302842</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1602347302842</updated>
+    </task>
+    <task id="LOCAL-00050" summary="打字机效果">
+      <created>1602347482457</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1602347482458</updated>
+    </task>
+    <task id="LOCAL-00051" summary="打字机效果">
+      <created>1602347723367</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1602347723368</updated>
+    </task>
+    <task id="LOCAL-00052" summary="打字机效果">
+      <created>1602347880571</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1602347880571</updated>
+    </task>
+    <task id="LOCAL-00053" summary="打字机效果">
+      <created>1602348053076</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1602348053076</updated>
+    </task>
+    <task id="LOCAL-00054" summary="ThreadLocal">
+      <created>1603633289615</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1603633289615</updated>
+    </task>
+    <task id="LOCAL-00055" summary="bug">
+      <created>1606634137112</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1606634137113</updated>
+    </task>
+    <task id="LOCAL-00056" summary="class结构分析器">
+      <created>1610462721463</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1610462721464</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,24 +491,32 @@
     <MESSAGE value="修改标签" />
     <MESSAGE value="循环枚举" />
     <MESSAGE value="lowDb" />
-    <option name="LAST_COMMIT_MESSAGE" value="lowDb" />
+    <MESSAGE value="jvm如何判断对象已死" />
+    <MESSAGE value="尝试用Optional取代null" />
+    <MESSAGE value="可达性分析算法" />
+    <MESSAGE value="电子书的常用操作" />
+    <MESSAGE value="打字机效果" />
+    <MESSAGE value="ThreadLocal" />
+    <MESSAGE value="bug" />
+    <MESSAGE value="class结构分析器" />
+    <option name="LAST_COMMIT_MESSAGE" value="class结构分析器" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1600516101096">
+    <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1606994173724">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606994173724" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1610462829306">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600516101096" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1601046068687">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1610462829306" />
+    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610461523621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1601046068687" />
-    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600865995874">
+    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1610461523621" />
+    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1602343780479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600865995874" />
-    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1600592578942">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="661" y="252" width="598" height="536" key="find.popup/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1600592578942" />
+    <state x="661" y="252" width="598" height="536" key="find.popup/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1602343780479" />
   </component>
 </project>
