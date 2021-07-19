@@ -25,9 +25,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="class结构分析器">
+    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="idea插件">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-07-19-javaThreadSave.markdown" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-01-05-classReader01.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-01-05-classReader01.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+    <property name="last_opened_file_path" value="F:/njvmGo/njvm-go-test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -104,13 +104,9 @@
       <workItem from="1610461501841" duration="2612000" />
       <workItem from="1612069951015" duration="2082000" />
       <workItem from="1613868853520" duration="107000" />
-    </task>
-    <task id="LOCAL-00008" summary="init">
-      <created>1600444775753</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1600444775753</updated>
+      <workItem from="1622034246093" duration="242000" />
+      <workItem from="1623249237657" duration="112000" />
+      <workItem from="1626709158059" duration="841000" />
     </task>
     <task id="LOCAL-00009" summary="init">
       <created>1600516472161</created>
@@ -448,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610462721464</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="idea插件">
+      <created>1622034452567</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1622034452567</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,24 +502,17 @@
     <MESSAGE value="ThreadLocal" />
     <MESSAGE value="bug" />
     <MESSAGE value="class结构分析器" />
-    <option name="LAST_COMMIT_MESSAGE" value="class结构分析器" />
+    <MESSAGE value="idea插件" />
+    <option name="LAST_COMMIT_MESSAGE" value="idea插件" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1606994173724">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606994173724" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1610462829306">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1623249348026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1610462829306" />
-    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610461523621">
+    <state x="740" y="274" key="FileChooserDialogImpl/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1623249348026" />
+    <state x="653" y="292" key="git4idea.merge.GitPullDialog" timestamp="1622034466434">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1610461523621" />
-    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1602343780479">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="661" y="252" width="598" height="536" key="find.popup/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1602343780479" />
+    <state x="653" y="292" key="git4idea.merge.GitPullDialog/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1622034466434" />
   </component>
 </project>
