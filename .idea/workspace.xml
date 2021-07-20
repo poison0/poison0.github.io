@@ -25,9 +25,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="idea插件">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-07-19-javaThreadSave.markdown" afterDir="false" />
+    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="同步容器">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-07-19-javaThreadSave.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-07-19-javaThreadSave.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,21 +106,8 @@
       <workItem from="1613868853520" duration="107000" />
       <workItem from="1622034246093" duration="242000" />
       <workItem from="1623249237657" duration="112000" />
-      <workItem from="1626709158059" duration="841000" />
-    </task>
-    <task id="LOCAL-00009" summary="init">
-      <created>1600516472161</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1600516472161</updated>
-    </task>
-    <task id="LOCAL-00010" summary="init">
-      <created>1600516561278</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1600516561278</updated>
+      <workItem from="1626709158059" duration="913000" />
+      <workItem from="1626794454972" duration="2163000" />
     </task>
     <task id="LOCAL-00011" summary="init">
       <created>1600516681030</created>
@@ -451,7 +438,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622034452567</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="同步容器">
+      <created>1626710470624</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1626710470625</updated>
+    </task>
+    <task id="LOCAL-00059" summary="同步容器">
+      <created>1626710510825</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1626710510825</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,13 +504,18 @@
     <MESSAGE value="bug" />
     <MESSAGE value="class结构分析器" />
     <MESSAGE value="idea插件" />
-    <option name="LAST_COMMIT_MESSAGE" value="idea插件" />
+    <MESSAGE value="同步容器" />
+    <option name="LAST_COMMIT_MESSAGE" value="同步容器" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1623249348026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1623249348026" />
+    <state x="2281" y="174" key="Vcs.Push.Dialog.v2" timestamp="1626710515670">
+      <screen x="1920" y="13" width="1536" height="826" />
+    </state>
+    <state x="2281" y="174" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@1920.13.1536.826" timestamp="1626710515670" />
     <state x="653" y="292" key="git4idea.merge.GitPullDialog" timestamp="1622034466434">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
