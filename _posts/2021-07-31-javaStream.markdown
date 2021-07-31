@@ -268,7 +268,7 @@ Stream.generate(Math::random).limit(5).forEach(System.out::println);
 > collector 收集器接口
 > collectors 是java内置的已经实现的collector接口的工具类方法集合，提供了很多静态工厂方法
 
-#### 6.1 汇总
+#### 7.1 汇总
 
 ```java
 //返回数据元素的个数 
@@ -303,7 +303,7 @@ Stream.of(1, 2, 3, 5, 5, 6, 7, 8, 9).map(String::valueOf).collect(Collectors.joi
 Stream.of(1, 2, 3, 5, 5, 6, 7, 8, 9).map(String::valueOf).collect(Collectors.joining("-","@","&")); >> @1-2-3-5-5-6-7-8-9&
 ```
 
-### 8.分组
+#### 7.2.分组
 
 > 可以用Collectors.groupingBy工厂方法返回的收集器对数据进行分组，groupingBy也可以和其他收集器合起来实现一些非常复杂的效果
 
@@ -341,13 +341,13 @@ Map<String, List<Integer>> trade1 = trades.stream().collect(Collectors.groupingB
 }, Collectors.toList())));
 ```
 
-### ９.自定义收集器
+### 8.自定义收集器
 
 
 
-### 10.并行流
+### 9.并行流
 
-### 11.Java Stream流的基石 monad 、构造一个monad函数 `探讨`
+### 10.Java Stream流的基石 monad 、构造一个monad函数 `探讨`
 
 
 
