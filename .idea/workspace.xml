@@ -25,10 +25,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="同步容器">
+    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="stream api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-07-19-javaThreadSave.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-07-19-javaThreadSave.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-07-31-javaStream.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-07-31-javaStream.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,13 +112,7 @@
       <workItem from="1627476778206" duration="600000" />
       <workItem from="1627572211804" duration="8000" />
       <workItem from="1627663116661" duration="651000" />
-    </task>
-    <task id="LOCAL-00013" summary="init">
-      <created>1600518995331</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1600518995331</updated>
+      <workItem from="1627714475401" duration="925000" />
     </task>
     <task id="LOCAL-00014" summary="init">
       <created>1600519471603</created>
@@ -458,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627663342234</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="stream api">
+      <created>1627714558151</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1627714558152</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,18 +510,19 @@
     <MESSAGE value="class结构分析器" />
     <MESSAGE value="idea插件" />
     <MESSAGE value="同步容器" />
-    <option name="LAST_COMMIT_MESSAGE" value="同步容器" />
+    <MESSAGE value="stream api" />
+    <option name="LAST_COMMIT_MESSAGE" value="stream api" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1623249348026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1623249348026" />
-    <state x="451" y="201" key="Vcs.Push.Dialog.v2" timestamp="1627663346414">
-      <screen x="0" y="0" width="1920" height="1032" />
+    <state x="2281" y="174" key="Vcs.Push.Dialog.v2" timestamp="1627714633065">
+      <screen x="1920" y="13" width="1536" height="826" />
     </state>
     <state x="451" y="201" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@0.0.1920.1032" timestamp="1627663346414" />
-    <state x="2281" y="174" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@1920.13.1536.826" timestamp="1626797572631" />
+    <state x="2281" y="174" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@1920.13.1536.826" timestamp="1627714633065" />
     <state x="653" y="292" key="git4idea.merge.GitPullDialog" timestamp="1622034466434">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
