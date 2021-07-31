@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 同步容器
+title: 同步容器和并发容器
 category: 技术
 date: 2021-07-19
 Author: AzureWind
@@ -8,7 +8,7 @@ tags: [java,多线程]
 comments: true
 ---
 ### 线程安全的同步容器
-创建和jdk自带的同步容器
+    创建和jdk自带的同步容器
 #### ArrayList -> Vector,Stack
 Vector 一般情况下是线程安全的，但是在某些情况下是线程不安全的，如下代码会抛出异常，因为顺序问题
 会导致get方法抛出异常
@@ -42,4 +42,7 @@ HashTable 是线程安全的 方法中都加了synchronized修饰符
        synchronized (mutex) {return m.put(key, value);}
     }
 ```
- 
+ ### 并发容器
+#### ArrayList -> CopyOnWriteArrayList
+#### HashSet、TreeSet -> CopyOnWriteArraySet ConcurrentSkipListSet
+#### HashMap、TreeMap -> ConcurrentHashMap ConcurrentSkipListMap
