@@ -303,7 +303,7 @@ Stream.of(1, 2, 3, 5, 5, 6, 7, 8, 9).map(String::valueOf).collect(Collectors.joi
 Stream.of(1, 2, 3, 5, 5, 6, 7, 8, 9).map(String::valueOf).collect(Collectors.joining("-","@","&")); >> @1-2-3-5-5-6-7-8-9&
 ```
 
-#### 7.2.分组
+#### 7.2分组
 
 > 可以用Collectors.groupingBy工厂方法返回的收集器对数据进行分组，groupingBy也可以和其他收集器合起来实现一些非常复杂的效果
 
@@ -343,11 +343,189 @@ Map<String, List<Integer>> trade1 = trades.stream().collect(Collectors.groupingB
 
 ### 8.自定义收集器
 
+> 只需实现 Collectors 接口中的方法就可以自己实现一个收集器
+
+```java
+public class CollectorExa<T> implements Collector<T, List<T>, List<T>> {
+
+    /**
+     * 在调用时它会创建一个空的累加器实例，供数据收集过程使用。
+     */
+    @Override
+    public Supplier<List<T>> supplier() {
+        return ()->new ArrayList<>();
+    }
+
+    /**
+     *  将元素添加到结果容器
+     *  当遍历到流中第n个元素时，这个函数执行
+     * 时会有两个参数：保存归约结果的累加器（已收集了流中的前 n1 个项目），还有第n个元素本身。
+     * 该函数将返回void，因为累加器是原位更新，即函数的执行改变了它的内部状态以体现遍历的
+     * 元素的效果。
+     */
+    @Override
+    public BiConsumer<List<T>, T> accumulator() {
+        return (list,item)->list.add(item);
+    }
+
+    /**
+     * combiner方法会返回一个供归约操作使用的函数，它定义了对
+     * 流的各个子部分进行并行处理时，各个子部分归约所得的累加器要如何合并。对于toList而言，
+     * 这个方法的实现非常简单，只要把从流的第二个部分收集到的项目列表加到遍历第一部分时得到
+     * 的列表后面就行了：
+     */
+    @Override
+    public BinaryOperator<List<T>> combiner() {
+        return  (list1, list2) -> {
+                    list1.addAll(list2);
+                    return list1; };
+    }
+
+    /**
+     * 在遍历完流后，finisher方法必须返回在累积过程的最后要调用的一个函数，以便将累加
+     * 器对象转换为整个集合操作的最终结果。
+     */
+    @Override
+    public Function<List<T>, List<T>> finisher() {
+        return Function.identity();
+    }
+    /**
+     * 最后一个方法——characteristics会返回一个不可变的Characteristics集合，它定义
+     * 了收集器的行为——尤其是关于流是否可以并行归约，以及可以使用哪些优化的提示。
+     *
+     * Characteristics是一个包含三个项目的枚举。
+     *
+     * UNORDERED——归约结果不受流中项目的遍历和累积顺序的影响。
+     * CONCURRENT——accumulator函数可以从多个线程同时调用，且该收集器可以并行归
+     * 约流。如果收集器没有标为UNORDERED，那它仅在用于无序数据源时才可以并行归约。
+     * IDENTITY_FINISH——这表明完成器方法返回的函数是一个恒等函数，可以跳过。这种
+     * 情况下，累加器对象将会直接用作归约过程的最终结果。这也意味着，将累加器A不加检
+     * 查地转换为结果R是安全的。
+     */
+    @Override
+    public Set<Characteristics> characteristics() {
+        return Collections.unmodifiableSet(EnumSet.of(Collector.Characteristics.IDENTITY_FINISH));
+    }
+}
+// 尝试使用
+Stream.of(5,4,5,6,7).collect(new CollectorExa<>());
+
+```
+
 
 
 ### 9.并行流
 
-### 10.Java Stream流的基石 monad 、构造一个monad函数 `探讨`
+> 将流转为并行流只需要中间调用一个 .parallel() 方法即可，调用之后流内会设置一个标志，同样的调用 sequential()可以把它编程顺序流，但是下面的操作需要注意
+
+```java
+//此方法并不会先并行，在顺序执行，在并行，由于流是惰性计算的，所以是否并行只会看最后一次调用，所以这个流是整体是并行的
+//使用的线程池大小为运行机器上的内核数，使用并行流不一定会比顺序流更加高效，有可能会更慢，因为并行本身会消耗资源
+Stream.parallel() 
+ .filter(...) 
+ .sequential() 
+ .map(...) 
+ .parallel() 
+ .reduce(); 
+```
+
+
+
+### 10.Java Stream流的基石 monad 、构造一个monad函数 
+
+> monad范畴学上的解释是 一个子函子上的幺半群 
+>
+> 我理解的是把类型封装起来，对原始类型的操作转变成对封装类型的操作  a+b ==> f(a)+f(b)，推荐[图解 Monad - 阮一峰的网络日志 (ruanyifeng.com)](https://www.ruanyifeng.com/blog/2015/07/monad.html)
+
+```java
+//一个简单的monad函数
+public interface MonadExample<T> {
+
+    static <T> MonadExampleImp<T> of(T value){
+        return new MonadExampleImp<>(value);
+    }
+
+    <R> MonadExample<R> map(Function<T, R> function);
+
+    Optional<T> Has(T value);
+
+    class MonadExampleImp<T> implements MonadExample<T>{
+        private T value;
+
+        public MonadExampleImp(T value) {
+            this.value = value;
+        }
+
+        @Override
+        public <R> MonadExample<R> map(Function<T, R> function) {
+            return new MonadExampleImp<>(function.apply(value));
+        }
+
+        @Override
+        public Optional<T> Has(T value) {
+            if(value.equals(this.value)){
+                return Optional.of(this.value);
+            }
+            return Optional.empty();
+        }
+
+        public static void main(String[] args) {
+            Optional<String> has = MonadExample.of(4)
+                    .map(x -> String.valueOf(4))
+                    .map(x -> String.valueOf(4))
+                    .map(x -> String.valueOf(4))
+                    .Has("3");
+            System.out.println(has.orElse("-1"));
+        }
+    }
+}
+```
+
+> github有人写了一个对try catch进行monad封装的类库 [jasongoodwin/better-java-monads (github.com)](https://github.com/jasongoodwin/better-java-monads)
+>
+> 利用这个类库可以把try catch延后处理，让整个流的运算显得更加合理
+
+```xml
+<!--maven引入依赖-->
+<dependency>
+    <groupId>com.jason-goodwin</groupId>
+    <artifactId>better-monads</artifactId>
+    <version>0.4.0</version>
+</dependency>
+```
+
+```java
+
+//如果流里面有异常需要抛出，只能按下面的的方式写
+List<Integer> old = Stream.of(5).map(x -> {
+    try {
+        Thread.sleep(4);
+    } catch (InterruptedException e) {
+        return -1;
+    }
+    return x;
+}).collect(Collectors.toList());
+
+//如果用类库之后可以，可以用一种更加合理的方式去处理异常
+List<Integer> collect = Stream.of(5).map((x) -> Try.ofFailable(() -> {
+    Thread.sleep(400);
+    return x;
+})).map(x -> x.orElse(-1)).collect(Collectors.toList());
+```
+
+
+
+------------ 本文内容参考如下-------------
+
+[《Java8 实战》]([Java 8实战 (豆瓣) (douban.com)](https://book.douban.com/subject/26772632/))、
+
+[图解 Monad - 阮一峰的网络日志 (ruanyifeng.com)](https://www.ruanyifeng.com/blog/2015/07/monad.html)、 
+
+[jasongoodwin/better-java-monads (github.com)](https://github.com/jasongoodwin/better-java-monads)
+
+[JavaLambdaInternals/6-Stream Pipelines.md at master · CarpenterLee/JavaLambdaInternals (github.com)](https://github.com/CarpenterLee/JavaLambdaInternals/blob/master/6-Stream Pipelines.md)
+
+
 
 
 
