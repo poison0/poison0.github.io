@@ -517,14 +517,13 @@ List<Integer> collect = Stream.of(5).map((x) -> Try.ofFailable(() -> {
 
 ------------ 本文内容参考如下-------------
 
-[《Java8 实战》]([Java 8实战 (豆瓣) (douban.com)](https://book.douban.com/subject/26772632/))、
+[《Java8 实战》](https://book.douban.com/subject/26772632/)
 
-[图解 Monad - 阮一峰的网络日志 (ruanyifeng.com)](https://www.ruanyifeng.com/blog/2015/07/monad.html)、 
+[图解 Monad - 阮一峰的网络日志 (ruanyifeng.com)](https://www.ruanyifeng.com/blog/2015/07/monad.html)
 
 [jasongoodwin/better-java-monads (github.com)](https://github.com/jasongoodwin/better-java-monads)
 
-[JavaLambdaInternals/6-Stream Pipelines.md at master · CarpenterLee/JavaLambdaInternals (github.com)](https://github.com/CarpenterLee/JavaLambdaInternals/blob/master/6-Stream Pipelines.md)
-
+[JavaLambdaInternals](https://github.com/CarpenterLee/JavaLambdaInternals/blob/master/6-Stream%20Pipelines.md)
 
 
 
