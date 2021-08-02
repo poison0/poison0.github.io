@@ -481,6 +481,8 @@ public interface MonadExample<T> {
 }
 ```
 
+#### 10.1 封装try catch
+
 > github有人写了一个对try catch进行monad封装的类库 [jasongoodwin/better-java-monads (github.com)](https://github.com/jasongoodwin/better-java-monads)
 >
 > 利用这个类库可以把try catch延后处理，让整个流的运算显得更加合理
@@ -513,6 +515,156 @@ List<Integer> collect = Stream.of(5).map((x) -> Try.ofFailable(() -> {
 })).map(x -> x.orElse(-1)).collect(Collectors.toList());
 ```
 
+#### 10.2复制流
+
+> Java 8 中附录为了解决流只能执行一次的问题，封装了一个 StreamForker 方法，可以把流复制并且并行执行的方法，代码如下
+
+```java
+public class StreamForker<T> {
+
+    private final Stream<T> stream;
+    private final Map<Object, Function<Stream<T>, ?>> forks = new HashMap<>();
+
+    public StreamForker(Stream<T> stream) {
+        this.stream = stream;
+    }
+
+    public StreamForker<T> fork(Object key, Function<Stream<T>, ?> f) {
+        forks.put(key, f);
+        return this;
+    }
+
+    public Results getResults() {
+        ForkingStreamConsumer<T> consumer = build();
+        try {
+            stream.sequential().forEach(consumer);
+        } finally {
+            consumer.finish();
+        }
+        return consumer;
+    }
+
+    private ForkingStreamConsumer<T> build() {
+        List<BlockingQueue<T>> queues = new ArrayList<>();
+
+        Map<Object, Future<?>> actions =
+                forks.entrySet().stream().reduce(
+                        new HashMap<>(),
+                        (map, e) -> {
+                            map.put(e.getKey(),
+                                    getOperationResult(queues, e.getValue()));
+                            return map;
+                        },
+                        (m1, m2) -> {
+                            m1.putAll(m2);
+                            return m1;
+                        });
+
+        return new ForkingStreamConsumer<>(queues, actions);
+    }
+
+    private Future<?> getOperationResult(List<BlockingQueue<T>> queues, Function<Stream<T>, ?> f) {
+        BlockingQueue<T> queue = new LinkedBlockingQueue<>();
+        queues.add(queue);
+        Spliterator<T> spliterator = new BlockingQueueSpliterator<>(queue);
+        Stream<T> source = StreamSupport.stream(spliterator, false);
+        return CompletableFuture.supplyAsync( () -> f.apply(source) );
+    }
+
+    public static interface Results {
+        public <R> R get(Object key);
+    }
+
+    private static class ForkingStreamConsumer<T> implements Consumer<T>, Results {
+        static final Object END_OF_STREAM = new Object();
+
+        private final List<BlockingQueue<T>> queues;
+        private final Map<Object, Future<?>> actions;
+
+        ForkingStreamConsumer(List<BlockingQueue<T>> queues, Map<Object, Future<?>> actions) {
+            this.queues = queues;
+            this.actions = actions;
+        }
+
+        @Override
+        public void accept(T t) {
+            queues.forEach(q -> q.add(t));
+        }
+
+        @Override
+        public <R> R get(Object key) {
+            try {
+                return ((Future<R>) actions.get(key)).get();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        void finish() {
+            accept((T) END_OF_STREAM);
+        }
+    }
+
+    private static class BlockingQueueSpliterator<T> implements Spliterator<T> {
+        private final BlockingQueue<T> q;
+
+        BlockingQueueSpliterator(BlockingQueue<T> q) {
+            this.q = q;
+        }
+
+        @Override
+        public boolean tryAdvance(Consumer<? super T> action) {
+            T t;
+            while (true) {
+                try {
+                    t = q.take();
+                    break;
+                }
+                catch (InterruptedException e) {
+                }
+            }
+
+            if (t != ForkingStreamConsumer.END_OF_STREAM) {
+                action.accept(t);
+                return true;
+            }
+
+            return false;
+        }
+
+        @Override
+        public Spliterator<T> trySplit() {
+            return null;
+        }
+
+        @Override
+        public long estimateSize() {
+            return 0;
+        }
+
+        @Override
+        public int characteristics() {
+            return 0;
+        }
+    }
+}
+//测试代码如下，想要用一个流同时进行分页，并且输出总个数，调用非常简单
+
+int pageNo = 2;
+int pageSize = 3;
+Stream<Integer> integerStream = Stream.of(1, 2, 3, 5, 5, 6, 7, 8, 9);
+StreamForker.Results results = new StreamForker<Integer>(integerStream)
+    .fork("count", Stream::count)
+    .fork("list", s -> s.skip((pageNo - 1) * pageSize).limit(pageSize).collect(Collectors.toList()))
+    .getResults();
+Long count = results.get("count");
+List<Integer> list = results.get("list");
+System.out.println("count:"+count);
+System.out.println(list);
+
+>> count:9
+>> [5, 5, 6]
+```
 
 
 ------------ 本文内容参考如下-------------
