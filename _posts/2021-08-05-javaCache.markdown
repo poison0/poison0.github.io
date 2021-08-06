@@ -191,3 +191,76 @@ null
 null
 null
 ```
+CREATE TABLE `tbl_flop_setting` (
+`id` varchar(20) NOT NULL COMMENT 'id',
+`nick` varchar(50) NOT NULL COMMENT '用户nick',
+`module_name` varchar(1024) DEFAULT NULL COMMENT '模块名称',
+`card_num` int DEFAULT NULL COMMENT '卡片个数',
+`act_start_time` varchar(20) NOT NULL COMMENT '活动开始时间',
+`act_end_time` varchar(20) NOT NULL COMMENT '活动结束时间',
+`create_time` varchar(20) DEFAULT NULL COMMENT '创建时间',
+`open_init` int DEFAULT 0 COMMENT '是否开启初始赠送，0:不开启 1:开启',
+`open_attentive` int DEFAULT 0 COMMENT '是否开启关注店铺赠送，0:不开启 1:开启',
+`open_member` int DEFAULT 0 COMMENT '是否开启入会赠送，0:不开启 1:开启',
+`open_share` int DEFAULT 0 COMMENT '是否开启分享店铺赠送，0:不开启 1:开启',
+`init_num` int DEFAULT 0 COMMENT '初始赠送个数',
+`attentive_num` int DEFAULT 0 COMMENT '关注店铺赠送个数',
+`member_num` int DEFAULT 0 COMMENT '入会赠送个数',
+`share_num` int DEFAULT 0 COMMENT '分享店铺赠送个数',
+`template_type` int DEFAULT 1 COMMENT '模板类型 1:模板1，2:模板2，3:模板3，0:自定义模板',
+`template_title` varchar(512) DEFAULT NULL COMMENT '卡片主标题',
+`custom_title_color` varchar(20) DEFAULT NULL COMMENT '自定义模板的标题颜色色号，只有模板为自定义时有效',
+`custom_theme_color` varchar(20) DEFAULT NULL COMMENT '自定义模板的主题颜色色号，只有模板为自定义时有效',
+`custom_bg_img` varchar(512) DEFAULT NULL COMMENT '自定义模板的背景图片，只有模板为自定义时有效',
+`custom_card_img` varchar(512) DEFAULT NULL COMMENT '自定义模板的卡片图片，只有模板为自定义时有效',
+PRIMARY KEY (`id`)
+) comment '翻牌优惠设置';
+
+CREATE TABLE `tbl_flop_prize` (
+`id` varchar(20) NOT NULL COMMENT 'id',
+`nick` varchar(255) NOT NULL COMMENT '用户旺旺',
+`flop_id` text DEFAULT NULL COMMENT 'tbl_flop_setting表对应id',
+`type` int DEFAULT 0 COMMENT '类型 0:优惠券',
+'last_num' int DEFAULT 0 COMMENT '剩余个数 -1代表无限个',
+`create_time` varchar(20) DEFAULT NULL COMMENT '创建时间',
+`total_num` int DEFAULT 0 COMMENT '奖品数量',
+`probability` int DEFAULT 0 COMMENT '中奖概率，单位%，值为0-100的正整数',
+PRIMARY KEY (`id`)
+) comment ' 翻牌优惠设置奖品';
+
+CREATE TABLE `tbl_flop_prize_coupon` (
+`id` varchar(20) NOT NULL COMMENT 'id',
+`nick` varchar(255) NOT NULL COMMENT '用户旺旺',
+`flop_prize_id` varchar(20) DEFAULT NULL COMMENT 'tbl_flop_prize  对应id',
+`title` varchar(255) DEFAULT NULL COMMENT '优惠券名称',
+`create_time` varchar(20) DEFAULT NULL COMMENT '创建时间',
+`expire_time` varchar(20) DEFAULT NULL COMMENT '优惠券过期时间',
+`start_time` varchar(20) DEFAULT NULL COMMENT '优惠券开始时间',
+`coupon_url` varchar(255) DEFAULT NULL COMMENT '优惠券链接',
+`status` int DEFAULT NULL COMMENT '1:有效，2:失效',
+PRIMARY KEY (`id`)
+) comment '翻牌优惠设置的优惠券';
+
+CREATE TABLE `tbl_flop_prize_record` (
+`id` varchar(20) NOT NULL COMMENT 'id',
+`nick` varchar(255) NOT NULL COMMENT '用户旺旺',
+`buyer_nick` varchar(255) NOT NULL COMMENT '买家旺旺',
+`type` int DEFAULT 0 COMMENT '类型 0:优惠券',
+`status` int DEFAULT 0 COMMENT '0:已经领完，1:已经领取，2:未领取',
+`position` int DEFAULT 1 COMMENT '翻出的牌所处的位置，从左至右，从上到下依次排列',
+`flop_id` varchar(20) DEFAULT NULL COMMENT 'tbl_flop_setting  对应id',
+`flop_prize_coupon_id` varchar(20) DEFAULT NULL COMMENT 'tbl_flop_prize_coupon  对应id',
+`tbl_flop_prize` varchar(20) DEFAULT NULL COMMENT 'tbl_flop_prize 对应id',
+`create_time` varchar(20) DEFAULT NULL COMMENT '创建时间',
+PRIMARY KEY (`id`)
+) comment '翻牌优惠设置的买家领取记录';
+
+CREATE TABLE `tbl_flop_prize_buyer` (
+`id` varchar(20) NOT NULL COMMENT 'id',
+`nick` varchar(255) NOT NULL COMMENT '用户旺旺',
+`buyer_nick` varchar(255) NOT NULL COMMENT '买家旺旺',
+`flop_id` varchar(20) DEFAULT NULL COMMENT 'tbl_flop_setting  对应id',
+`last_num` int DEFAULT 0 COMMENT '买家剩余翻牌次数',
+`use_num` int DEFAULT 0 COMMENT '买家已经使用翻牌次数',
+PRIMARY KEY (`id`)
+) comment '翻牌优惠设置买家记录';
