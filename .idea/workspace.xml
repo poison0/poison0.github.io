@@ -26,6 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="stream api">
+      <change afterPath="$PROJECT_DIR$/_posts/2022-02-20-algorithm-permutations2.markdown" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,49 +113,19 @@
       <workItem from="1627476778206" duration="600000" />
       <workItem from="1627572211804" duration="8000" />
       <workItem from="1627663116661" duration="651000" />
-      <workItem from="1627714475401" duration="925000" />
-    </task>
-    <task id="LOCAL-00014" summary="init">
-      <created>1600519471603</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1600519471603</updated>
-    </task>
-    <task id="LOCAL-00015" summary="init">
-      <created>1600519593501</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1600519593501</updated>
-    </task>
-    <task id="LOCAL-00016" summary="init">
-      <created>1600519719720</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1600519719720</updated>
-    </task>
-    <task id="LOCAL-00017" summary="不显示评论区">
-      <created>1600520405766</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1600520405766</updated>
-    </task>
-    <task id="LOCAL-00018" summary="修改图标">
-      <created>1600520847644</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1600520847644</updated>
-    </task>
-    <task id="LOCAL-00019" summary="修改图标">
-      <created>1600521080142</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1600521080142</updated>
+      <workItem from="1627714475401" duration="1845000" />
+      <workItem from="1627783412185" duration="2833000" />
+      <workItem from="1627915258468" duration="58000" />
+      <workItem from="1627918192334" duration="120000" />
+      <workItem from="1627918930025" duration="10000" />
+      <workItem from="1628268999671" duration="804000" />
+      <workItem from="1629015196700" duration="971000" />
+      <workItem from="1645286276659" duration="1190000" />
+      <workItem from="1645326185674" duration="3363000" />
+      <workItem from="1645625879825" duration="1266000" />
+      <workItem from="1648649088760" duration="600000" />
+      <workItem from="1648733967530" duration="894000" />
+      <workItem from="1648817089317" duration="603000" />
     </task>
     <task id="LOCAL-00020" summary="修改图标">
       <created>1600521174925</created>
@@ -457,7 +428,49 @@
       <option name="project" value="LOCAL" />
       <updated>1627714558152</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="stream api">
+      <created>1627723762832</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1627723762832</updated>
+    </task>
+    <task id="LOCAL-00064" summary="stream api">
+      <created>1627723987141</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1627723987141</updated>
+    </task>
+    <task id="LOCAL-00065" summary="stream api">
+      <created>1627793671524</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1627793671525</updated>
+    </task>
+    <task id="LOCAL-00066" summary="stream api">
+      <created>1627794195381</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1627794195381</updated>
+    </task>
+    <task id="LOCAL-00067" summary="stream api">
+      <created>1627918247490</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1627918247490</updated>
+    </task>
+    <task id="LOCAL-00068" summary="stream api">
+      <created>1645331755720</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1645331755720</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,18 +527,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="stream api" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1623249348026">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1623249348026" />
-    <state x="2281" y="174" key="Vcs.Push.Dialog.v2" timestamp="1627714633065">
+    <state x="2281" y="150" key="Vcs.Push.Dialog.v2" timestamp="1645331757176">
       <screen x="1920" y="13" width="1536" height="826" />
     </state>
-    <state x="451" y="201" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@0.0.1920.1032" timestamp="1627663346414" />
-    <state x="2281" y="174" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@1920.13.1536.826" timestamp="1627714633065" />
-    <state x="653" y="292" key="git4idea.merge.GitPullDialog" timestamp="1622034466434">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="653" y="292" key="git4idea.merge.GitPullDialog/1920.13.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1622034466434" />
+    <state x="2281" y="150" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@1920.13.1536.826" timestamp="1645331757176" />
   </component>
 </project>

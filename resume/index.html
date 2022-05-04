@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lte IE 8]>
+<html lang="zh-CN" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>牛顺顺 - 个人简历</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!--[if lte IE 8]><div class="lte-ie8-comment-wrapper"><p class="lte-ie8-comment">你正在使用 IE8 或更老的古董浏览器，还是快升级或者换浏览器吧~</p></div><![endif]-->
+  <aside></aside>
+  <div class="container">
+    <main>
+      <header class="row">
+        <figure class="header-qrcode"><img src="static/wechat.png" alt="雾隐楼台"
+            class="qrcode-img invisible-lt-sm visible-print" /></figure>
+        <section class="title">
+          <h1>牛顺顺</h1>
+          <h2>Java后端工程师</h2>
+        </section>
+        <address>
+          <ul class="contact">
+            <li class="contact-email"><a href="mailto://1570012077@qq.com">1570012077@qq.com</a></li>
+            <li class="contact-wechat">雾隐楼台</li>
+            <li class="contact-github"><a href="https://github.com/poison0">https://github.com/poison0</a></li>
+            <li class="contact-blog"><a href="https://poison0.github.io">https://poison0.github.io</a></li>
+            <li class="contact-phone">18145504513</li>
+            <li class="contact-wechat visible-lt-sm invisible-print">雾隐楼台</li>
+          </ul>
+        </address>
+      </header>
+      <article class="content row">
+        <article class="column-12 first column">
+          <section class="infomation-title">
+            <div class="sec-title-wrapper">
+              <h3 class="sec-title"><span class="sec-title-ch">个人信息</span><span class="sec-title-en">information</span>
+              </h3>
+            </div>
+            <div class="timeline-wrapper">
+              <ul class="sec-content timeline">
+                  <dl class="education-description timeline-content">
+                    <dd class="home">籍贯：河南</dd>
+                    <dd class="infomation birthday">生日：1995.02</dd>
+                    <dd class="infomation">性别：男</dd>
+                    <dd class="infomation work">Java开发：2018.04-至今</dd>
+                  </dl>
+              </ul>
+            </div>
+          </section>
+          <section class="education">
+            <div class="sec-title-wrapper">
+              <h3 class="sec-title"><span class="sec-title-ch">教育经历</span><span class="sec-title-en">Education</span>
+              </h3>
+            </div>
+            <div class="timeline-wrapper">
+              <ul class="sec-content timeline">
+                <li class="timeline-item education-undergraduate">
+                  <h3 class="timeline-title"><time class="education-time">2014 ~ 2018</time></h3>
+                  <dl class="education-description timeline-content">
+                    <dt class="education-name">黑龙江大学</dt>
+                    <dd class="education-major">信息管理与信息系统（全日制本科）</dd>
+                    <dd class="education-honor">5年技术博文积累</dd>
+                  </dl>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section class="experience">
+            <div class="sec-title-wrapper">
+              <h3 class="sec-title"><span class="sec-title-ch">项目与工作经验</span><span
+                  class="sec-title-en">Experience</span></h3>
+            </div>
+            <div class="timeline-wrapper">
+              <ul class="sec-content timeline">
+                <li class="timeline-item experience-internship">
+                  <h3 class="timeline-title"><span class="experience-place">广州瑞云网络科技有限公司深圳分公司（所有项目均为淘宝商家软件）</span>
+                    <time
+                      class="experience-time">2018.04 ~ 至今</time></h3>
+                    <dl class="experience-description timeline-content">
+                      <dt class="experience-position">掌中宝交易-订单中心（本人是从0到1最初的开发者）</dt>
+                      <dt class="experience-task">项目说明：订单中心是一个利用dubbo开放其接口，供其他微服务调用的后端项目，是为了解决商家查询订单接口慢的问题（速度慢是由于淘宝接口没有提供丰富的入参，而用户又需要各种定制查询，需要调多次淘宝接口导致）</dt>
+                      <dt class="experience-task">具体实现：整体项目使用SpringBoot2.0，通过 mongodb 存储从淘宝 api 拉取全量字段订单数据，保存用户查询时间至redis，并加redis锁，以保证分布式运行不会出错，下次用户进入查询，再根据查询时间增量查询数据，把查询的数据跟mongodb中数据进行对比，替换过期数据，即完成更新，通过特定的搜索条件添加mongodb索引的检索速度</dt>
+                    </dl>
+                    <dl class="experience-description timeline-content">
+                      <dt class="experience-position">掌中宝交易-短信模块（后续维护和开发）</dt>
+                      <dt class="experience-task">项目说明：提供公司所有项目短信的发送，使用kafka和数据库同步两种方法发送短信</dt>
+                      <dt class="experience-task">具体实现：其他项目可以通过kafka发送消息或者插入数据表的方式来通知短信项目发送对应短信，短信项目发送之后会对结果进行同步，具有很强的可扩展性，可以对接多个短信运营商，可以随时添加新的项目的短信发送类型</dt>
+                    </dl>
+                    <dl class="experience-description timeline-content">
+                      <dt class="experience-position">多买宝（后续维护和开发）</dt>
+                      <dt class="experience-task">项目说明：买家购买商品之后，可以使用该软件发送各种定制化卡片，包含定制化海报，优惠券，优惠金额，促销游戏等等。</dt>
+                      <dt class="experience-task">具体实现：是利用淘宝的奇门接口，经过一系列商家设计的复杂逻辑来判断推送需要推送的卡片，并发送给买家，项目中有使用 quartz 来作为分布式定时器，使用mongodb存储用户统计数据，使用redis保存缓存信息</dt>
+                    </dl>
+                    <dl class="experience-description timeline-content">
+                      <dt class="experience-position">掌中宝促销（后续维护和开发）</dt>
+                      <dt class="experience-task">项目说明：商家可以给用户发送促销连接，定制化促销服务</dt>
+                      <dt class="experience-task">主要负责：主要负责短信的发送和相关后台的维护，对接上方负责的短信模块</dt>
+                    </dl>
+                </li>
+                <li class="timeline-item experience-project">
+                  <h3 class="timeline-title"><span class="experience-project-type">个人项目</span><span
+                      class="experience-title-aside"><a href="https://github.com/poison0/NClassReader"
+                        class="experience-project-link">源代码</a></span></h3>
+                  <dl class="experience-description timeline-content">
+                    <dt class="experience-project-name">NclassReader：Java类文件结构查看器</dt>
+                    <dd class="experience-task">写这个的原因主要是因为要熟悉class文件结构</dd>
+                    <dd class="experience-task">使用<strong>vue</strong>开发前端页面，用<strong>electron</strong>来构建的一个桌面应用程序</dd>
+                    <dd class="experience-task">功能跟<a href="https://github.com/zxh0/classpy">Classpy</a> 类似</dd>
+                    <dd class="experience-task">遵循Java8Jvm规范解析，Java8以后的暂时没有添加</dd>
+                    <dd class="experience-task">左边是树形的class文件结构，对应右边的二进制字符，选择左边的分支，右边会对应高亮</dd>
+                    <dd class="experience-task">参考了《Java虚拟机规范（Java SE 8版）》《深入理解Java虚拟机（第3版）》</dd>
+                    <dd class="experience-task">选择前端来实现，是因为前端写页面比较简单，效果也要比Java页面要好看</dd>
+                  </dl>
+                </li>
+                <li class="timeline-item experience-project">
+                  <h3 class="timeline-title"><span class="experience-project-type">个人项目</span><span
+                      class="experience-title-aside"><a href="https://github.com/poison0/Nreader"
+                        class="experience-project-link">源代码</a></span></h3>
+                  <dl class="experience-description timeline-content">
+                    <dt class="experience-project-name">NReader：epub格式图书的桌面级阅读器</dt>
+                    <dd class="experience-task">个人学习前端时基于兴趣做的一个阅读器</dd>
+                    <dd class="experience-task">使用<strong>vue</strong>开发前端页面，也是用<strong>electron</strong>来构建的一个桌面应用程序</dd>
+                    <dd class="experience-task">支持绝大多数epub图书的阅读</dd>
+                    <dd class="experience-task">可以调节字体大小，背景颜色，进度条等常用设置</dd>
+                    <dd class="experience-task">使用了<strong>ant-design UI</strong>组件库</dd>
+                    <dd class="experience-task">使用了轻量级数据库<strong>lowDB</strong>来保存图书信息和进度信息</dd>
+                    <dd class="experience-task">使用<strong>epubjs</strong>来解析epub电子书文件</dd>
+                  </dl>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </article>
+        <article class="column-12 last column">
+          <section class="skills">
+            <div class="sec-title-wrapper">
+              <h3 class="sec-title"><span class="sec-title-ch">技能</span><span class="sec-title-en">Skills</span></h3>
+            </div>
+            <div class="timeline-wrapper">
+              <ul class="sec-content timeline">
+                <li class="timeline-item skills-frontend">
+                  <h3 class="timeline-title"><span class="skills-type">Java后端</span></h3>
+                  <dl class="skills-description timeline-content">
+                    <dt class="skills-item-summary"><strong>Java基础</strong></dt>
+                    <dd class="skills-item-description"><span>熟悉Java基础知识，对于泛型，接口，异常，容器，注解，以及各种Java语言基础都有很深了解</span></dd>
+                    <dd class="skills-item-description"><span>熟悉Java高并发及多线程业务处理，对于多线程及JUC都能熟练使用</span></dd>
+                    <dd class="skills-item-description"><span>了解一定的Jvm基础知识，对于Jvm底层运行逻辑非常感兴趣，目前想要利用Java实现一个简单的Jvm</span></dd>
+                    
+                    <dt class="skills-item-summary"><strong>Spring Boot</strong></dt>
+                    <dd class="skills-item-description"><span>能够独立搭建spring boot项目，熟悉web应用场景开发</span></dd>
+                    <dd class="skills-item-description"><span>熟悉数据库整合，项目中使用过mybatis、mybatis-plus，了解过分库分表解决方案 sharding-jdbc</span></dd>
+                    <dd class="skills-item-description"><span>能够整合各种中间件 redis、rabbitMQ、dubbo</span></dd>
+
+                    <dt class="skills-item-summary"><strong>数据库（mySql/redis/mongodb）</strong></dt>
+                    <dd class="skills-item-description"><span>熟悉mysql的使用、优化，了解一部分底层原理，能够对索引和查询性能进行优化</span></dd>
+                    <dd class="skills-item-description"><span>熟悉redis，项目中使用过redis做缓存和分布式锁</span></dd>
+                    <dd class="skills-item-description"><span>了解mongodb，使用过mongodb，熟悉springboot中的mongodb操作</span></dd>
+                      
+                    <dt class="skills-item-summary"><strong>RPC框架（dubbo）和 springCloud</strong></dt>
+                    <dd class="skills-item-description"><span>熟悉dubbo框架使用，能够使用springboot-dubbo构建微服务</span></dd>
+                    <dd class="skills-item-description"><span>了解springCloud和springCloudAlibaba，能够快速上手学习开发</span></dd>
+
+                    <dt class="skills-item-summary"><strong>消息中间件（kafka/RabbitMQ)</strong></dt>
+                    <dd class="skills-item-description"><span>熟悉kafka，项目中选择使用了kafka作为短信项目的消息队列</span></dd>
+                    <dd class="skills-item-description"><span>了解RabbitMQ的使用、做过springboot相关的项目</span></dd>
+
+                  </dl>
+                </li>
+                <li class="timeline-item skills-backend">
+                  <h3 class="timeline-title"><span class="skills-type">Web 前端</span></h3>
+                  <dl class="skills-description timeline-content">
+                    <dt class="skills-item-summary"><strong>html/js/css/vue（不深入）</strong></dt>
+                    <dd class="skills-item-description"><span>了解 html/js/css 一些基础知识</span></dd>
+                    <dd class="skills-item-description"><span>能够写出简单的网页，使用vue和各种组件可以开发一些简单的前端项目</span></dd>
+                    <dd class="skills-item-description"><span>有个人项目 NReader 和 NClassReader 是使用vue开发</span></dd>
+
+                    <dt class="skills-item-summary"><strong>electron（不深入）</strong></dt>
+                    <dd class="skills-item-description"><span>能够和vue一起开发一些桌面应用</span></dd>
+                    <dd class="skills-item-description"><span>有个人项目 NReader 和 NClassReader 是使用electron开发</span></dd>
+                  </dl>
+                </li>
+                <li class="timeline-item skills-miscellaneous">
+                  <h3 class="timeline-title"><span class="skills-type">其他</span></h3>
+                  <ul class="skills-description skills-miscellaneous timeline-content">
+                    <li class="skills-item-description"><span>具有一定的 数据结构 / 计算机网络 / 前端 相关知识</span></li>
+                    <li class="skills-item-description"><span>熟悉大部分的设计模式，对于代码的优化有很深的洁癖，着重于编写易懂具有扩展性的代码</span></li>               
+                    <li class="skills-item-description"><span>了解docker的简单使用，自己有台云端服务器，常常使用docker来搭建各种环境</span></li>
+                    <li class="skills-item-description"><span>了解Linux 基础使用，并不精通地使用Xshell</span></li>
+                    <li class="skills-item-description"><span>开发使用IDEA</span></li>
+                    <li class="skills-item-description"><span>个人缺点：涉猎很多但是不算精通，未来能够找到一个方向，进行深入</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </article>
+      </article>
+    </main>
+  </div>
+</body>
+
+</html>
