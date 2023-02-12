@@ -25,8 +25,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="stream api">
-      <change afterPath="$PROJECT_DIR$/_posts/2022-02-20-algorithm-permutations2.markdown" afterDir="false" />
+    <list default="true" id="38fd0826-6f4e-4d9e-91ee-24d27d76e1e5" name="Default Changelist" comment="Transaction 传播特性">
+      <change afterPath="$PROJECT_DIR$/_posts/2022-10-23-java-spring-interview.markdown" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,21 +53,24 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="F:/njvmGo/njvm-go-test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\poison0.github.io\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\poison0.github.io" />
       <recent name="D:\poison0.github.io\images" />
       <recent name="D:\poison0.github.io\_posts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\poison0.github.io\images" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -126,27 +129,16 @@
       <workItem from="1648649088760" duration="600000" />
       <workItem from="1648733967530" duration="894000" />
       <workItem from="1648817089317" duration="603000" />
-    </task>
-    <task id="LOCAL-00020" summary="修改图标">
-      <created>1600521174925</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1600521174925</updated>
-    </task>
-    <task id="LOCAL-00021" summary="删除关于">
-      <created>1600521639545</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1600521639545</updated>
-    </task>
-    <task id="LOCAL-00022" summary="删除关于">
-      <created>1600526467778</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1600526467778</updated>
+      <workItem from="1651680600182" duration="2183000" />
+      <workItem from="1651848820986" duration="938000" />
+      <workItem from="1651993864851" duration="65000" />
+      <workItem from="1664968781467" duration="3828000" />
+      <workItem from="1665805567222" duration="5337000" />
+      <workItem from="1665837983913" duration="867000" />
+      <workItem from="1665904360925" duration="599000" />
+      <workItem from="1665916592578" duration="600000" />
+      <workItem from="1666501294426" duration="1930000" />
+      <workItem from="1668319408557" duration="412000" />
     </task>
     <task id="LOCAL-00023" summary="删除关于">
       <created>1600526597503</created>
@@ -470,7 +462,28 @@
       <option name="project" value="LOCAL" />
       <updated>1645331755720</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="简历">
+      <created>1651680707869</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1651680707870</updated>
+    </task>
+    <task id="LOCAL-00070" summary="简历">
+      <created>1651682957551</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1651682957551</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Transaction 传播特性">
+      <created>1665814242902</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1665814242906</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,12 +537,31 @@
     <MESSAGE value="idea插件" />
     <MESSAGE value="同步容器" />
     <MESSAGE value="stream api" />
-    <option name="LAST_COMMIT_MESSAGE" value="stream api" />
+    <MESSAGE value="简历" />
+    <MESSAGE value="Transaction 传播特性" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transaction 传播特性" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2281" y="150" key="Vcs.Push.Dialog.v2" timestamp="1645331757176">
-      <screen x="1920" y="13" width="1536" height="826" />
+    <state x="840" y="351" key="#Notifications" timestamp="1665814289456">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="2281" y="150" key="Vcs.Push.Dialog.v2/1920.13.1536.826/0.0.1920.1032@1920.13.1536.826" timestamp="1645331757176" />
+    <state x="840" y="351" key="#Notifications/0.0.1920.1032/1920.0.1536.816@0.0.1920.1032" timestamp="1665814289456" />
+    <state x="338" y="66" key="SettingsEditor" timestamp="1665814651858">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="338" y="66" key="SettingsEditor/0.0.1920.1032/1920.0.1536.816@0.0.1920.1032" timestamp="1665814651858" />
+    <state x="2190" y="52" key="SettingsEditor/0.0.1920.1032/1920.0.1536.816@1920.0.1536.816" timestamp="1665808503041" />
+    <state x="552" y="244" key="Vcs.Push.Dialog.v2" timestamp="1665814433014">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="552" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1032/1920.0.1536.816@0.0.1920.1032" timestamp="1665814433014" />
+    <state x="752" y="425" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1665814417737">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="752" y="425" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1032/1920.0.1536.816@0.0.1920.1032" timestamp="1665814417737" />
+    <state x="2098" y="0" key="new project wizard" timestamp="1668319818089">
+      <screen x="1920" y="0" width="1536" height="816" />
+    </state>
+    <state x="2098" y="0" key="new project wizard/0.0.1920.1032/1920.0.1536.816@1920.0.1536.816" timestamp="1668319818089" />
   </component>
 </project>
