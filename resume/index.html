@@ -19,8 +19,8 @@
   <div class="container">
     <main>
       <header class="row">
-        <figure class="header-qrcode"><img src="static/wechat.png" alt="雾隐楼台"
-            class="qrcode-img invisible-lt-sm visible-print" /></figure>
+        <figure class="header-qrcode"><img src="static/wechat.jpg" alt="雾隐楼台"
+                                           class="qrcode-img invisible-lt-sm visible-print" /></figure>
         <section class="title">
           <h1>牛顺顺</h1>
           <h2>Java后端工程师</h2>
@@ -66,7 +66,6 @@
                   <dl class="education-description timeline-content">
                     <dt class="education-name">黑龙江大学</dt>
                     <dd class="education-major">信息管理与信息系统（全日制本科）</dd>
-                    <dd class="education-honor">5年技术博文积累</dd>
                   </dl>
                 </li>
               </ul>
@@ -98,25 +97,39 @@
                       <dt class="experience-task">项目说明：买家购买商品之后，可以使用该软件发送各种定制化卡片，包含定制化海报，优惠券，优惠金额，促销游戏等等。</dt>
                       <dt class="experience-task">具体实现：是利用淘宝的奇门接口，经过一系列商家设计的复杂逻辑来判断推送需要推送的卡片，并发送给买家，项目中有使用 quartz 来作为分布式定时器，使用mongodb存储用户统计数据，使用redis保存缓存信息</dt>
                     </dl>
-                    <dl class="experience-description timeline-content">
-                      <dt class="experience-position">掌中宝促销（后续维护和开发）</dt>
-                      <dt class="experience-task">项目说明：商家可以给用户发送促销连接，定制化促销服务</dt>
-                      <dt class="experience-task">主要负责：主要负责短信的发送和相关后台的维护，对接上方负责的短信模块</dt>
-                    </dl>
+<!--                    <dl class="experience-description timeline-content">-->
+<!--                      <dt class="experience-position">掌中宝促销（后续维护和开发）</dt>-->
+<!--                      <dt class="experience-task">项目说明：商家可以给用户发送促销连接，定制化促销服务</dt>-->
+<!--                      <dt class="experience-task">主要负责：主要负责短信的发送和相关后台的维护，对接上方负责的短信模块</dt>-->
+<!--                    </dl>-->
+                </li>
+                <li class="timeline-item experience-project">
+                  <h3 class="timeline-title"><span class="experience-project-type">个人项目</span><span
+                          class="experience-title-aside"><a href="https://github.com/poison0/nzook"
+                                                            class="experience-project-link">源代码</a></span></h3>
+                  <dl class="experience-description timeline-content">
+                    <dt class="experience-project-name"><strong>nzook</strong>：一个<strong>zookeeper</strong>可视化<strong>Intellij IDEA</strong>工具插件</dt>
+                    <dd class="experience-task">可以在插件市场直接搜索到，工作的时候使用<strong>Dubbo</strong>时需查看<strong>zookeeper</strong>节点，使用插件就非常方便了</dd>
+                    <dd class="experience-task">以树的形式提供显示<strong>zookeeper</strong>的znode结构</dd>
+                    <dd class="experience-task">可以新建、编辑、删除和拷贝节点</dd>
+                    <dd class="experience-task">可以查看和编辑节点数据、节点元数据和控制信息</dd>
+                    <dd class="experience-task">之后看情况还会加个测试<strong>Dubbo</strong>接口的功能</dd>
+                    <br>
+                  </dl>
                 </li>
                 <li class="timeline-item experience-project">
                   <h3 class="timeline-title"><span class="experience-project-type">个人项目</span><span
                       class="experience-title-aside"><a href="https://github.com/poison0/NClassReader"
                         class="experience-project-link">源代码</a></span></h3>
                   <dl class="experience-description timeline-content">
-                    <dt class="experience-project-name">NclassReader：Java类文件结构查看器</dt>
+                    <dt class="experience-project-name"><strong>NclassReader</strong>：Java类文件结构查看器</dt>
                     <dd class="experience-task">写这个的原因主要是因为要熟悉class文件结构</dd>
                     <dd class="experience-task">使用<strong>vue</strong>开发前端页面，用<strong>electron</strong>来构建的一个桌面应用程序</dd>
                     <dd class="experience-task">功能跟<a href="https://github.com/zxh0/classpy">Classpy</a> 类似</dd>
                     <dd class="experience-task">遵循Java8Jvm规范解析，Java8以后的暂时没有添加</dd>
                     <dd class="experience-task">左边是树形的class文件结构，对应右边的二进制字符，选择左边的分支，右边会对应高亮</dd>
                     <dd class="experience-task">参考了《Java虚拟机规范（Java SE 8版）》《深入理解Java虚拟机（第3版）》</dd>
-                    <dd class="experience-task">选择前端来实现，是因为前端写页面比较简单，效果也要比Java页面要好看</dd>
+<!--                    <dd class="experience-task">选择前端来实现，是因为前端写页面比较简单，效果也要比Java页面要好看</dd>-->
                     <br>
                   </dl>
                 </li>
@@ -125,14 +138,14 @@
                       class="experience-title-aside"><a href="https://github.com/poison0/Nreader"
                         class="experience-project-link">源代码</a></span></h3>
                   <dl class="experience-description timeline-content">
-                    <dt class="experience-project-name">NReader：epub格式图书的桌面级阅读器</dt>
+                    <dt class="experience-project-name"><strong>NReader</strong>：epub格式图书的桌面级阅读器</dt>
                     <dd class="experience-task">个人学习前端时基于兴趣做的一个阅读器</dd>
                     <dd class="experience-task">使用<strong>vue</strong>开发前端页面，也是用<strong>electron</strong>来构建的一个桌面应用程序</dd>
                     <dd class="experience-task">支持绝大多数epub图书的阅读</dd>
                     <dd class="experience-task">可以调节字体大小，背景颜色，进度条等常用设置</dd>
                     <dd class="experience-task">使用了<strong>ant-design UI</strong>组件库</dd>
                     <dd class="experience-task">使用了轻量级数据库<strong>lowDB</strong>来保存图书信息和进度信息</dd>
-                    <dd class="experience-task">使用<strong>epubjs</strong>来解析epub电子书文件</dd>
+<!--                    <dd class="experience-task">使用<strong>epubjs</strong>来解析epub电子书文件</dd>-->
                   </dl>
                 </li>
               </ul>
@@ -193,7 +206,7 @@
                     <li class="skills-item-description"><span>具有一定的 数据结构 / 计算机网络 / 前端 相关知识</span></li>
                     <li class="skills-item-description"><span>熟悉大部分的设计模式，对于代码的优化有很深的洁癖，着重于编写易懂具有扩展性的代码</span></li>
                     <li class="skills-item-description"><span>了解docker的简单使用，自己有台云端服务器，常常使用docker来搭建各种环境</span></li>
-                    <li class="skills-item-description"><span>了解Linux 基础使用，并不精通地使用Xshell</span></li>
+<!--                    <li class="skills-item-description"><span>了解Linux 基础使用，并不精通地使用Xshell</span></li>-->
                     <li class="skills-item-description"><span>开发使用IDEA</span></li>
                     <li class="skills-item-description"><span>个人缺点：涉猎很多但是不算精通，未来能够找到一个方向，进行深入</span></li>
                   </ul>
