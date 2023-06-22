@@ -770,7 +770,7 @@ section {
   display: inline-block;
 }
 .experience-project—plugin.experience-project-link::before {
-   content: "\f12e"
+   content: "\f1e6"
 }
 .skills-item-description {
   padding-left: 0;
@@ -797,13 +797,13 @@ section {
   content: "\f0ad";
 }
 .skills-frontend.timeline-item::before {
-  content: "\f12e";
-}
-.skills-backend.timeline-item::before {
   content: "\f0c2";
 }
+.skills-backend.timeline-item::before {
+  content: "\f1d9";
+}
 .skills-miscellaneous.timeline-item::before {
-  content: "\f085";
+  content: "\f1b3";
 }
 .skills-item-description {
   padding-left: 28px;
