@@ -769,6 +769,9 @@ section {
   margin-left: -19px;
   display: inline-block;
 }
+.experience-project—plugin.experience-project-link::before {
+   content: "\f12e"
+}
 .skills-item-description {
   padding-left: 0;
 }
