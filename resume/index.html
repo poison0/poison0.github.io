@@ -84,18 +84,18 @@
                       class="experience-time">2018.04 ~ 至今</time></h3>
                     <dl class="experience-description timeline-content">
                       <dt class="experience-position">掌中宝交易-订单中心（本人是从0到1最初的开发者）</dt>
-                      <dt class="experience-task">项目说明：订单中心是一个利用dubbo开放其接口，供其他微服务调用的后端项目，是为了解决商家查询订单接口慢的问题（速度慢是由于淘宝接口没有提供丰富的入参，而用户又需要各种定制查询，需要调多次淘宝接口导致）</dt>
-                      <dt class="experience-task">具体实现：整体项目使用SpringBoot2.0，通过 mongodb 存储从淘宝 api 拉取全量字段订单数据，保存用户查询时间至redis，并加redis锁，以保证分布式运行不会出错，下次用户进入查询，再根据查询时间增量查询数据，把查询的数据跟mongodb中数据进行对比，替换过期数据，即完成更新，通过特定的搜索条件添加mongodb索引的检索速度</dt>
+                      <dt class="experience-task">项目说明：订单中心是一个利用<strong>Dubbo</strong>开放其接口，供其他微服务调用的后端项目，是为了解决商家查询订单接口慢的问题（速度慢是由于淘宝接口没有提供丰富的入参，而用户又需要各种定制查询，需要调多次淘宝接口导致）</dt>
+                      <dt class="experience-task">具体实现：整体项目使用<strong>SpringBoot2.0</strong>，通过<strong>Mongodb</strong>存储从淘宝 api 拉取全量字段订单数据，保存用户查询时间至<strong>redis</strong>，并加<strong>Redis</strong>锁，以保证分布式运行不会出错，下次用户进入查询，再根据查询时间增量查询数据，把查询的数据跟<strong>mongodb</strong>中数据进行对比，替换过期数据，即完成更新，通过特定的搜索条件添加<strong>Mongodb</strong>索引的检索速度</dt>
                     </dl>
                     <dl class="experience-description timeline-content">
                       <dt class="experience-position">掌中宝交易-短信模块（后续维护和开发）</dt>
-                      <dt class="experience-task">项目说明：提供公司所有项目短信的发送，使用kafka和数据库同步两种方法发送短信</dt>
-                      <dt class="experience-task">具体实现：其他项目可以通过kafka发送消息或者插入数据表的方式来通知短信项目发送对应短信，短信项目发送之后会对结果进行同步，具有很强的可扩展性，可以对接多个短信运营商，可以随时添加新的项目的短信发送类型</dt>
+                      <dt class="experience-task">项目说明：提供公司所有项目短信的发送，使用<strong>Kafka</strong>和数据库同步两种方法发送短信</dt>
+                      <dt class="experience-task">具体实现：其他项目可以通过<strong>Kafka</strong>发送消息或者插入数据表的方式来通知短信项目发送对应短信，短信项目发送之后会对结果进行同步，具有很强的可扩展性，可以对接多个短信运营商，可以随时添加新的项目的短信发送类型</dt>
                     </dl>
                     <dl class="experience-description timeline-content">
                       <dt class="experience-position">多买宝（后续维护和开发）</dt>
                       <dt class="experience-task">项目说明：买家购买商品之后，可以使用该软件发送各种定制化卡片，包含定制化海报，优惠券，优惠金额，促销游戏等等。</dt>
-                      <dt class="experience-task">具体实现：是利用淘宝的奇门接口，经过一系列商家设计的复杂逻辑来判断推送需要推送的卡片，并发送给买家，项目中有使用 quartz 来作为分布式定时器，使用mongodb存储用户统计数据，使用redis保存缓存信息</dt>
+                      <dt class="experience-task">具体实现：是利用淘宝的奇门接口，经过一系列商家设计的复杂逻辑来判断推送需要推送的卡片，并发送给买家，项目中有使用<strong>quartz</strong>来作为分布式定时器，使用<strong>Mongodb</strong>存储用户统计数据，使用<strong>Redis</strong>保存缓存信息</dt>
                     </dl>
 <!--                    <dl class="experience-description timeline-content">-->
 <!--                      <dt class="experience-position">掌中宝促销（后续维护和开发）</dt>-->
@@ -178,15 +178,15 @@
                     <dt class="skills-item-summary"><strong>Spring Boot</strong></dt>
                     <dd class="skills-item-description"><span>能够独立搭建spring boot项目，熟悉web应用场景开发</span></dd>
                     <dd class="skills-item-description"><span>熟悉数据库整合，项目中使用过mybatis、mybatis-plus，了解过分库分表解决方案 sharding-jdbc</span></dd>
-                    <dd class="skills-item-description"><span>能够整合各种中间件 redis、rabbitMQ、dubbo</span></dd>
+                    <dd class="skills-item-description"><span>能够整合各种中间件 redis、rabbitMQ、Dubbo</span></dd>
 
                     <dt class="skills-item-summary"><strong>数据库（mySql/redis/mongodb）</strong></dt>
                     <dd class="skills-item-description"><span>熟悉mysql的使用、优化，了解一部分底层原理，能够对索引和查询性能进行优化</span></dd>
                     <dd class="skills-item-description"><span>熟悉redis，项目中使用过redis做缓存和分布式锁</span></dd>
                     <dd class="skills-item-description"><span>了解mongodb，使用过mongodb，熟悉springboot中的mongodb操作</span></dd>
 
-                    <dt class="skills-item-summary"><strong>RPC框架（dubbo）和 springCloud</strong></dt>
-                    <dd class="skills-item-description"><span>熟悉dubbo框架使用，能够使用springboot-dubbo构建微服务</span></dd>
+                    <dt class="skills-item-summary"><strong>RPC框架（Dubbo）和 springCloud</strong></dt>
+                    <dd class="skills-item-description"><span>熟悉Dubbo框架使用，能够使用springboot-Dubbo构建微服务</span></dd>
                     <dd class="skills-item-description"><span>了解springCloud和springCloudAlibaba，能够快速上手学习开发</span></dd>
 
                     <dt class="skills-item-summary"><strong>消息中间件（kafka/RabbitMQ)</strong></dt>
