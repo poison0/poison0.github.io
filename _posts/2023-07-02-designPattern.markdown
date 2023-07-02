@@ -69,9 +69,65 @@ public class App
     }
 }
 ```
-> 输出结果
+#### 输出结果
 ```java
 景田纯净水
 ```
 
 ## 工厂模式
+> 水的接口和实现类
+```java
+public interface Water {
+    String getName();
+}
+
+public class BaisuishanWater implements Water{
+    public String getName() {
+        return "百岁山纯净水";
+    }
+}
+
+public class JingTianWater implements Water {
+    public String getName() {
+        return "景田纯净水";
+    }
+}
+
+```
+> 工厂类
+```java
+public interface WaterFactory {
+    Water createWater();
+}
+public class BaisuishanWaterFactory implements WaterFactory{
+    @Override
+    public Water createWater() {
+        return new BaisuishanWater();
+    }
+}
+public class JingTianWaterFactory implements WaterFactory{
+    @Override
+    public Water createWater() {
+        return new JingTianWater();
+    }
+}
+
+```
+
+> 测试类
+```java
+public class App 
+{
+    public static void main( String[] args )
+    {
+        //工厂方法模式
+        BaisuishanWaterFactory baisuishanWaterFactory = new BaisuishanWaterFactory();
+        System.out.println(baisuishanWaterFactory.createWater().getName());
+
+    }
+}
+```
+#### 输出结果
+```java
+百岁山纯净水
+```
