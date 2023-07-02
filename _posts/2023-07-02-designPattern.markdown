@@ -9,7 +9,7 @@ comments: true
 ---
 
 ## 简单工厂模式
-> 水的接口和实现类
+> 水的接口和实现类  
 ```java
 public interface Water {
     String getName();
@@ -28,7 +28,7 @@ public class JingTianWater implements Water {
 }
 
 ```
-> 工厂类
+> 工厂类   
 ```java
 public class WaterFactory {
     public static Water getWater(WaterType type) {
@@ -42,7 +42,7 @@ public class WaterFactory {
     }
 }
 ```
-> 水的类型
+> 水的类型  
 ```java
 public enum WaterType {
     JT("景田纯净水"),
@@ -56,7 +56,7 @@ public enum WaterType {
     }
 }
 ```
-> 测试类
+> 测试类  
 ```java
 public class App 
 {
@@ -69,13 +69,13 @@ public class App
     }
 }
 ```
-#### 输出结果
+#### 输出结果  
 ```java
 景田纯净水
 ```
 
-## 工厂模式
-> 水的接口和实现类
+## 工厂模式  
+> 水的接口和实现类  
 ```java
 public interface Water {
     String getName();
@@ -94,7 +94,7 @@ public class JingTianWater implements Water {
 }
 
 ```
-> 工厂类
+> 工厂类  
 ```java
 public interface WaterFactory {
     Water createWater();
@@ -114,7 +114,7 @@ public class JingTianWaterFactory implements WaterFactory{
 
 ```
 
-> 测试类
+> 测试类  
 ```java
 public class App 
 {
@@ -127,7 +127,7 @@ public class App
     }
 }
 ```
-#### 输出结果
+#### 输出结果  
 ```java
 百岁山纯净水
 ```
